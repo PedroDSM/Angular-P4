@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 align-self-center table-responsive">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let user of usuarios">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">Id: {{user.id}}</p>
+                <p class="card-text">Name: {{user.nombre}}</p>
+                <p class="card-text">Username: {{user.username}}</p>
+                <p class="card-text">Email: {{user.email}}</p>
+                <p class="card-text">BirthDay: {{user.f_nacimiento}}</p>
+                <p class="card-text">Nacionality: {{user.nacionalidad}}</p>
+                <p class="card-text"><a (click)="leer(user.id)" class="btn btn-info" >Detalles</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
