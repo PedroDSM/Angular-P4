@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 align-self-center table-responsive">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let productora of productoras">
+            <div @Aparecer class="card">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(productora.id)"></button>
+            </div>
+              <div class="card-body">
+                <p class="card-text">Id: {{productora.id}}</p>
+                <p class="card-text">Name: {{productora.nombre}}</p>
+                <p class="card-text">President: {{productora.presidente}}</p>
+                <p class="card-text">Propietary: {{productora.propietario}}</p>
+                <p class="card-text">Website: {{productora.sitio_web}}</p>
+                <p class="card-text"><a (click)="leer(productora.id)" class="btn btn-info" >Detalles</a></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

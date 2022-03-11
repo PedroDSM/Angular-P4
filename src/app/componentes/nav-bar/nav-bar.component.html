@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container-fluid">
+        <a class="navbar-brand"><img src="assets/angular.png" width="50" height="50" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-body fs-5" aria-current="page" routerLink="inicio">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-body fs-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Formularios
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="FPR">Formularios Productoras</a></li>
+                        <li><a class="dropdown-item" routerLink="FI">Formularios Idiomas</a></li>
+                        <li><a class="dropdown-item" routerLink="FC">Formularios Clasificaciones</a></li>
+                        <li><a class="dropdown-item" routerLink="FCA">Formularios Categorias</a></li>
+                        <li><a class="dropdown-item" routerLink="FP">Formulario Peliculas</a></li>
+                        <li><a class="dropdown-item" routerLink="FA">Formularios Actores</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-body fs-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Listas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="LPR">Lista Productoras</a></li>
+                        <li><a class="dropdown-item" routerLink="LI">Lista Idiomas</a></li>
+                        <li><a class="dropdown-item" routerLink="LC">Lista Clasificaciones</a></li>
+                        <li><a class="dropdown-item" routerLink="LP">Lista Peliculas</a></li>
+                        <li><a class="dropdown-item" routerLink="LA">Lista Actores</a></li>
+                        <li><a class="dropdown-item" routerLink="LU">Lista Usuarios</a></li>
+                        <li><a class="dropdown-item" routerLink="LCA">Lista Categorias</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/login">Login</a></li>
+                        <li><a class="dropdown-item" href="/register">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div *ngIf="!actualizar">
+              <h3 @DerechaIzquierda class="card-text">Name: {{Cla.nombre}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Description: {{Cla.descripcion}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">MinAge: {{Cla.edad_minima}}</h3> <br>
+              <div class="d-grid gap-2">
+
+                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+              </div>
+            </div>
+            <div *ngIf="actualizar">
+  
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpName" class="form-label">Name</label>
+                <input type="text" [(ngModel)]="Cla.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
+              </div>
+              <div @IzquierdaDerecha class="mb-3">
+                <label for="inpMinAge" class="form-label">MinAge</label>
+                <input type="number" [(ngModel)]="Cla.edad_minima" class=" bg-dark text-white form-control" id="inpMinAge" name="inpMinAge">
+              </div>
+              <div @IzquierdaDerecha class="mb-3">
+                <label for="inpDescripcion" class="form-label">Description</label>
+                <input type="text" [(ngModel)]="Cla.descripcion" class=" bg-dark text-white form-control" id="inpDescripcion" name="inpDescripcion">
+              </div>
+              <div class="d-grid gap-2">
+                <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
+                <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+              </div>
+            </div>
+            <br>
+            <a routerLink="/LC" class="btn btn-dark" >Volver</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="error" class="container card"  >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <div class="alert alert-danger">
+          HA HABIDO UN PROBLEMA PROCESANDO LA SOLICITUD, VUELVA A INTENTARLO
+        </div>
+      </div>
+    </div>
+  </div>
+  

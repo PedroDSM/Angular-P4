@@ -1,0 +1,47 @@
+<div @Aparecer class="container card bg-dark"  style="border-radius: 2rem;" >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <form #forma="ngForm">
+            <label for="inpName" class="form-label text-white">Nombre Productora</label>
+            <input type="text" [(ngModel)]="pro.nombre" name="name" class=" bg-dark text-white form-control"  id="inpName" #nombre="ngModel" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" placeholder="Name"/>
+            <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+              <div *ngIf="nombre.errors?.['required']">
+                  Introduzca un Nombre Valido
+              </div>
+          </div> 
+          <label for="inpPresidente" class="form-label text-white">Presidente</label>
+          <input type="text" [(ngModel)]="pro.presidente" name="Presidente" class=" bg-dark text-white form-control"  id="inpPresidente" #presidente="ngModel" required [ngClass]="{'is-valid': !presidente.invalid, 'is-invalid': presidente.invalid}" placeholder="Presidente"/>
+          <div class="invalid-feedback" *ngIf="presidente.invalid && (presidente.dirty || presidente.touched)">
+            <div *ngIf="presidente.errors?.['required']">
+                Introduzca un Presidente
+            </div>
+        </div> 
+        <label for="inpPropietario" class="form-label text-white">Propietario</label>
+        <input type="text" [(ngModel)]="pro.propietario" name="Propietario" class=" bg-dark text-white form-control"  id="inpPropietario" #propietario="ngModel" required [ngClass]="{'is-valid': !propietario.invalid, 'is-invalid': propietario.invalid}" placeholder="Propietario"/>
+        <div class="invalid-feedback" *ngIf="propietario.invalid && (propietario.dirty || propietario.touched)">
+          <div *ngIf="propietario.errors?.['required']">
+              Introduzca un Propietario
+          </div>
+      </div> 
+      <label for="inpSitio" class="form-label text-white">Sitio Web</label>
+      <input type="url" [(ngModel)]="pro.sitio_web" name="Sitio" class=" bg-dark text-white form-control"  id="inpSitio" #sitio_web="ngModel" required [ngClass]="{'is-valid': !sitio_web.invalid, 'is-invalid': sitio_web.invalid}" placeholder="Sitio"/>
+      <div class="invalid-feedback" *ngIf="sitio_web.invalid && (sitio_web.dirty || sitio_web.touched)">
+        <div *ngIf="sitio_web.errors?.['required']">
+            Introduzca una URL Valida
+        </div>
+    </div> 
+          <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="error" class="container card" >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <div class="alert alert-danger">
+          NO SE PUDO CREAR EL RECURSO, VUELVA A INTENTARLO
+        </div>
+      </div>
+    </div>
+  </div>
+  

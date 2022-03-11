@@ -1,0 +1,43 @@
+<div @Aparecer class="container card bg-dark"  style="border-radius: 2rem;" >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <form #forma="ngForm">
+            <label for="inpName" class="form-label text-white">Name</label>
+            <input type="text" [(ngModel)]="clas.nombre" name="name" minlength="5" class=" bg-dark text-white form-control"  id="inpName" #nombre="ngModel" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" placeholder="Name"/>
+            <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+              <div *ngIf="nombre.errors?.['minlength']">
+                  Introduzca un Nombre con 5 Caracteres Minimo
+              </div>
+              <div *ngIf="nombre.errors?.['required']">
+                  Introduzca un Nombre Valido
+              </div>
+          </div> 
+            <label for="inpEdad" class="form-label text-white">Edad Minima</label>
+            <input type="number" [(ngModel)]="clas.edad_minima" name="edad_minima" class=" bg-dark text-white form-control"  id="inpEdad" #edad_minima="ngModel" placeholder="edad_minima"  required [ngClass]="{'is-valid': !edad_minima.invalid, 'is-invalid': edad_minima.invalid}" />
+            <div class="invalid-feedback" *ngIf="edad_minima.invalid && (edad_minima.dirty || edad_minima.touched)">
+              <div *ngIf="edad_minima.errors?.['required']">
+                  Introduzca una Edad Minima
+              </div>
+          </div> 
+            <label for="inpDescripcion" class="form-label text-white">Descripcion</label>
+            <input type="text" [(ngModel)]="clas.descripcion" name="descripcion" class=" bg-dark text-white form-control" id="inpDescripcion" #descripcion="ngModel" placeholder="Descripcion" required [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}"/>
+            <div class="invalid-feedback" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+              <div *ngIf="descripcion.errors?.['required']">
+                Introduzca una Descripcion {{ descripcion.value }}
+              </div>
+            </div>
+          <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="error" class="container card" >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <div class="alert alert-danger">
+          NO SE PUDO CREAR EL RECURSO, VUELVA A INTENTARLO
+        </div>
+      </div>
+    </div>
+  </div>
+  

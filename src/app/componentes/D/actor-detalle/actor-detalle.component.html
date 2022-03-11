@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div *ngIf="!actualizar">
+              <h3 @DerechaIzquierda class="card-text">Name: {{Ac.nombre}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">BirthDay: {{Ac.f_nacimiento}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Nacionality: {{Ac.nacionalidad}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Start: {{Ac.inicio_carrera}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Finish: {{Ac.final_carrera}}</h3> <br>
+              <div class="d-grid gap-2">
+
+                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+              </div>
+            </div>
+            <div *ngIf="actualizar">
+  
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpName" class="form-label">Name</label>
+                <input type="text" [(ngModel)]="Ac.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpBirthday" class="form-label">BirthDay</label>
+                <input type="date" [(ngModel)]="Ac.f_nacimiento" class=" bg-dark text-white form-control" id="inpBirthday" name="inpBirthday">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpNacionality" class="form-label">Nacionality</label>
+                <input type="text" [(ngModel)]="Ac.nacionalidad" class=" bg-dark text-white form-control" id="inpNacionality" name="inpNacionality">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpStart" class="form-label">Start</label>
+                <input type="date" [(ngModel)]="Ac.inicio_carrera" class=" bg-dark text-white form-control" id="inpStart" name="inpStart">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpFinish" class="form-label">Finish</label>
+                <input type="date" [(ngModel)]="Ac.final_carrera" class=" bg-dark text-white form-control" id="inpFinish" name="inpFinish">
+              </div>
+              <div class="d-grid gap-2">
+                <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
+                <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+              </div>
+            </div>
+            <br>
+            <a routerLink="/LA" class="btn btn-dark" >Volver</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="error" class="container card"  >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <div class="alert alert-danger">
+          HA HABIDO UN PROBLEMA PROCESANDO LA SOLICITUD, VUELVA A INTENTARLO
+        </div>
+      </div>
+    </div>
+  </div>
+  

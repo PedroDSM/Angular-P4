@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div *ngIf="!actualizar">
+              <h3 @DerechaIzquierda class="card-text">Name: {{Cat.nombre}}</h3> <br>
+              <div class="d-grid gap-2">
+
+                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+              </div>
+            </div>
+            <div *ngIf="actualizar">
+  
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpName" class="form-label">Name</label>
+                <input type="text" [(ngModel)]="Cat.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName" placeholder="Juan Armando Gonzales Smith">
+              </div>
+              <div class="d-grid gap-2">
+                <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
+                <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+              </div>
+            </div>
+            <br>
+            <a routerLink="/LCA" class="btn btn-dark" >Volver</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="error" class="container card"  >
+    <div class="row card-body align-items-center">
+      <div class="col align-self-center">
+        <div class="alert alert-danger">
+          HA HABIDO UN PROBLEMA PROCESANDO LA SOLICITUD, VUELVA A INTENTARLO
+        </div>
+      </div>
+    </div>
+  </div>
+  
