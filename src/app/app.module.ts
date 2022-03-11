@@ -19,7 +19,6 @@ import { InicioComponent } from './componentes/diseños/inicio/inicio.component'
 import { CategoriasComponent } from './componentes/formulariosT/categorias/categorias.component';
 import { ListaDirectoresComponent } from './componentes/listasT/lista-directores/lista-directores.component';
 import { ListaActoresComponent } from './componentes/listasT/lista-actores/lista-actores.component';
-import { ListaUsuariosComponent } from './componentes/listasT/lista-usuarios/lista-usuarios.component';
 import { ListaPeliculasComponent } from './componentes/listasT/lista-peliculas/lista-peliculas.component';
 import { ListaProductorasComponent } from './componentes/listasT/lista-productoras/lista-productoras.component';
 import { ListaCategoriasComponent } from './componentes/listasT/lista-categorias/lista-categorias.component';
@@ -49,7 +48,6 @@ import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detal
     CategoriasComponent,
     ListaDirectoresComponent,
     ListaActoresComponent,
-    ListaUsuariosComponent,
     ListaPeliculasComponent,
     ListaProductorasComponent,
     ListaCategoriasComponent,

@@ -13,7 +13,6 @@ import { ListaActoresComponent } from './componentes/listasT/lista-actores/lista
 import { ListaCategoriasComponent } from './componentes/listasT/lista-categorias/lista-categorias.component';
 import { ListaClasificacionesComponent } from './componentes/listasT/lista-clasificaciones/lista-clasificaciones.component';
 import { ListaDirectoresComponent } from './componentes/listasT/lista-directores/lista-directores.component';
-import { ListaUsuariosComponent } from './componentes/listasT/lista-usuarios/lista-usuarios.component';
 import { ListaProductorasComponent } from './componentes/listasT/lista-productoras/lista-productoras.component';
 import { ListaPeliculasComponent } from './componentes/listasT/lista-peliculas/lista-peliculas.component';
 import { ListaIdiomasComponent } from './componentes/listasT/lista-idiomas/lista-idiomas.component';
@@ -40,7 +39,6 @@ const routes: Routes = [
   { path: 'LA', component: ListaActoresComponent },
   { path: 'LC', component: ListaClasificacionesComponent },
   { path: 'LD', component: ListaDirectoresComponent },
-  { path: 'LU', component: ListaUsuariosComponent },
   { path: 'LP', component: ListaPeliculasComponent },
   { path: 'LPR', component: ListaProductorasComponent },
   { path: 'LCA', component: ListaCategoriasComponent },
