@@ -8,8 +8,8 @@ import {
   keyframes,
   // ...
 } from '@angular/animations';
-import { User2 } from 'src/app/Models/Umodel';
-import { PeticionesService } from 'src/app/peticiones/peticiones.service';
+import { User } from 'src/app/Models/Umodel';
+import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -33,7 +33,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  user:User2 = {
+  user:User = {
     nombre: "",
     username: "",
     email: "",
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   send(){
 
     this.peticion.create(this.user).subscribe(
@@ -59,9 +59,9 @@ export class RegisterComponent implements OnInit {
       },
       error=>{
         this.error = true
-        alert("Ha habido un error al procesar la solicitud")
+        alert(error.error.error)
       })
 
   }
-  
+
 }

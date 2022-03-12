@@ -1,7 +1,10 @@
-export interface Categorias {
-  categorias: any;
+export interface Respuesta {
+  categorias?: Categoria;
   categoria?: Categoria;
   mensaje?:   string;
+}
+export interface Categorias {
+  categorias?: Categoria[];
 }
 
 export interface Categoria {

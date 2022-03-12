@@ -85,13 +85,13 @@ export class ActorDetalleComponent implements OnInit {
     this.id= id
     this.peticion.getOne(id).subscribe(
       respuesta=>{
-        this.Ac = respuesta.actor
+        this.Ac = respuesta.actor!
       })
   }
   modificar(){
     this.peticion.update(this.id,this.Ac).subscribe(
       respuesta=>{
-          this.Ac = respuesta.actores
+          this.Ac = respuesta.actor!
           alert(respuesta.mensaje)
           this.router.navigateByUrl('/LA')
       },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PeticionesService } from 'src/app/peticiones/peticiones.service';
+import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 import {
   trigger,
   state,
@@ -8,7 +8,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { User3 } from 'src/app/Models/Umodel';
+import { User } from 'src/app/Models/Umodel';
 
 @Component({
   selector: 'app-detalles',
@@ -67,7 +67,7 @@ import { User3 } from 'src/app/Models/Umodel';
 })
 export class DetallesComponent implements OnInit {
   id = 0
-  public usuario: User3 = {
+  public usuario: User = {
     nombre: '',
     email: '',
     username: '',
@@ -89,14 +89,14 @@ export class DetallesComponent implements OnInit {
     this.id= id
     this.peticion.getOne(id).subscribe(
       respuesta=>{
-        this.usuario = respuesta.usuario
+        this.usuario = respuesta.usuario!
       })
   }
 
   modificar(){
     this.peticion.update(this.id,this.usuario).subscribe(
       respuesta=>{
-          this.usuario = respuesta.usuario
+          this.usuario = respuesta.usuario!
           alert(respuesta.mensaje)
           this.router.navigateByUrl('/LU')
       },

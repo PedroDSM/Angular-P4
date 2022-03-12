@@ -11,35 +11,30 @@
               <div *ngIf="nombre.errors?.['required']">
                   Introduzca un Nombre Valido
               </div>
-          </div> 
+          </div>
             <label for="inpFecha" class="form-label text-white">Fecha de Nacimiento</label>
             <input type="date" [(ngModel)]="ac.f_nacimiento" name="f_nacimiento" class=" bg-dark text-white form-control"  id="inpFecha" #f_nacimiento="ngModel" required [ngClass]="{'is-valid': !f_nacimiento.invalid, 'is-invalid': f_nacimiento.invalid}" />
             <div class="invalid-feedback" *ngIf="f_nacimiento.invalid && (f_nacimiento.dirty || f_nacimiento.touched)">
               <div *ngIf="f_nacimiento.errors?.['required']">
                   Introduzca una Fecha de Nacimiento
               </div>
-          </div> 
+          </div>
           <label for="inpNacionalidad" class="form-label text-white">Nacionalidad</label>
           <input type="text" [(ngModel)]="ac.nacionalidad" name="nacionalidad" class=" bg-dark text-white form-control"  id="inpNacionalidad" #nacionalidad="ngModel" required [ngClass]="{'is-valid': !nacionalidad.invalid, 'is-invalid': nacionalidad.invalid}" />
           <div class="invalid-feedback" *ngIf="nacionalidad.invalid && (nacionalidad.dirty || nacionalidad.touched)">
             <div *ngIf="nacionalidad.errors?.['required']">
                 Introduzca una Nacionalidad
             </div>
-        </div> 
+        </div>
         <label for="inpInicio" class="form-label text-white">Inicio de Carrera</label>
-        <input type="text" [(ngModel)]="ac.inicio_carrera" name="Inicio" class=" bg-dark text-white form-control"  id="inpInicio" #inicio_carrera="ngModel" required [ngClass]="{'is-valid': !inicio_carrera.invalid, 'is-invalid': inicio_carrera.invalid}" />
+        <input type="date" [(ngModel)]="ac.inicio_carrera" name="Inicio" class=" bg-dark text-white form-control"  id="inpInicio" #inicio_carrera="ngModel" required [ngClass]="{'is-valid': !inicio_carrera.invalid, 'is-invalid': inicio_carrera.invalid}" />
         <div class="invalid-feedback" *ngIf="inicio_carrera.invalid && (inicio_carrera.dirty || inicio_carrera.touched)">
           <div *ngIf="inicio_carrera.errors?.['required']">
               Introduzca una Fecha de Inicio
           </div>
-      </div> 
+      </div>
       <label for="inpFinal" class="form-label text-white">Final de Carrera</label>
-      <input type="text" [(ngModel)]="ac.final_carrera" name="Fin" class=" bg-dark text-white form-control"  id="inpFinal" #final_carrera="ngModel" required [ngClass]="{'is-valid': !final_carrera.invalid, 'is-invalid': final_carrera.invalid}" />
-      <div class="invalid-feedback" *ngIf="final_carrera.invalid && (final_carrera.dirty || final_carrera.touched)">
-        <div *ngIf="final_carrera.errors?.['required']">
-            Introduzca Fin de Carrera
-        </div>
-    </div> 
+      <input type="date" [(ngModel)]="ac.final_carrera" name="Fin" class=" bg-dark text-white form-control"  id="inpFinal" #final_carrera="ngModel" />
           <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
         </form>
       </div>
@@ -54,4 +49,4 @@
       </div>
     </div>
   </div>
-  
+

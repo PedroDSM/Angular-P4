@@ -1,7 +1,10 @@
-export interface Idiomas {
-  idiomas: any;
+export interface Respuesta {
+  idiomas?: Idiomas;
   idioma?:  Idioma;
   mensaje?: string;
+}
+export interface Idiomas {
+  idiomas?: Idioma[];
 }
 
 export interface Idioma {

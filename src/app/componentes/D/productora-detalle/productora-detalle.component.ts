@@ -84,13 +84,13 @@ export class ProductoraDetalleComponent implements OnInit {
     this.id= id
     this.peticion.getOne(id).subscribe(
       respuesta=>{
-        this.PR = respuesta.productora
+        this.PR = respuesta.productora!
       })
   }
   modificar(){
     this.peticion.update(this.id,this.PR).subscribe(
       respuesta=>{
-          this.PR = respuesta.productoras
+          this.PR = respuesta.productora!
           alert(respuesta.mensaje)
           this.router.navigateByUrl('/LPR')
       },

@@ -81,13 +81,13 @@ export class CategoriaDetalleComponent implements OnInit {
     this.id= id
     this.peticion.getOne(id).subscribe(
       respuesta=>{
-        this.Cat = respuesta.categoria
+        this.Cat = respuesta.categoria!
       })
   }
   modificar(){
     this.peticion.update(this.id,this.Cat).subscribe(
       respuesta=>{
-          this.Cat = respuesta.categorias
+          this.Cat = respuesta.categoria!
           alert(respuesta.mensaje)
           this.router.navigateByUrl('/LCA')
       },

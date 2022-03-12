@@ -83,14 +83,14 @@ export class ClasificacionDetalleComponent implements OnInit {
     this.id= id
     this.peticion.getOne(id).subscribe(
       respuesta=>{
-        this.Cla = respuesta.clasificacion
+        this.Cla = respuesta.clasificacion!
       })
   }
   modificar(){
     this.peticion.update(this.id,this.Cla).subscribe(
       respuesta=>{
-          this.Cla = respuesta.clasificaciones
-          alert(respuesta.mensaje)
+          this.Cla = respuesta.clasificacion!
+          alert(respuesta.mensaje!)
           this.router.navigateByUrl('/LC')
       },
       error=>{

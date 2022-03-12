@@ -82,13 +82,13 @@ export class IdiomasDetalleComponent implements OnInit {
     this.id= id
     this.peticion.getOne(id).subscribe(
       respuesta=>{
-        this.Idi = respuesta.idioma
+        this.Idi = respuesta.idioma!
       })
   }
   modificar(){
     this.peticion.update(this.id,this.Idi).subscribe(
       respuesta=>{
-          this.Idi = respuesta.idiomas
+          this.Idi = respuesta.idioma!
           alert(respuesta.mensaje)
           this.router.navigateByUrl('/LI')
       },

@@ -1,30 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Clasificacion, Clasificaciones } from '../Models/Clmodel';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Clasificacion, Clasificaciones, Respuesta } from '../Models/Clmodel';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClasificacionesService {
-  public clasificaciones: any = []
-  constructor(private http: HttpClient) {
-  console.log('Servicio funcionando');
-  }
+  constructor(private http: HttpClient, private cookieService:CookieService) {
+    console.log('Servicio funcionando');
+    }
+    token = this.cookieService.get('token')
+
+  header = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${this.token}`
+  })
   urlBase = 'http://127.0.0.1:3333/clasificaciones'
 getAll(){
-  return this.http.get<Clasificaciones>(this.urlBase)
+  return this.http.get<Respuesta>(this.urlBase, {headers:this.header})
 }
 getOne(indice:any){
-  return this.http.get<Clasificacion>(this.urlBase+'/'+indice)
+  return this.http.get<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})
 }
 create(info:Clasificacion){
   console.log(info)
-  return this.http.post<Clasificaciones>(this.urlBase,info)
-} 
+  return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
+}
 delete(indice:any){
-  return this.http.delete<Clasificaciones>(this.urlBase+'/'+indice)
+  return this.http.delete<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})
 }
 update(indice:any, info: Clasificacion){
-  return this.http.put<Clasificaciones>(this.urlBase+'/'+indice, info)
+  return this.http.put<Respuesta>(this.urlBase+'/'+indice, info, {headers:this.header})
 }
 }
