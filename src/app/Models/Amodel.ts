@@ -12,7 +12,7 @@ export interface Actor {
   nombre?:         string;
   f_nacimiento?:   string;
   nacionalidad?:   string;
-  inicio_carrera?: string;
+  inicio_carrera?: string|Date|number;
   final_carrera?:  string|null;
   actor?: {
     inicio_carrera?: string;

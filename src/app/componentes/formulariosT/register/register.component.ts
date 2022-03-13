@@ -11,6 +11,7 @@ import {
 import { User } from 'src/app/Models/Umodel';
 import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -44,8 +45,12 @@ export class RegisterComponent implements OnInit {
   };
 
   error = false
+  fecha_actual:Date|string
 
-  constructor(private peticion: PeticionesService, private router: Router) { }
+  constructor(private peticion: PeticionesService, private router: Router) {
+    this.fecha_actual = new Date()
+    this.fecha_actual = formatDate(this.fecha_actual!, 'yyyy-MM-dd', 'en')
+  }
 
   ngOnInit(): void {
   }

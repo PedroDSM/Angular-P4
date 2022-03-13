@@ -15,14 +15,14 @@
               </div>
             </div>
             <div *ngIf="actualizar">
-  
+
               <div @IzquierdaDerecha  class="mb-3">
                 <label for="inpName" class="form-label">Name</label>
                 <input type="text" [(ngModel)]="Ac.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
                 <label for="inpBirthday" class="form-label">BirthDay</label>
-                <input type="date" [(ngModel)]="Ac.f_nacimiento" class=" bg-dark text-white form-control" id="inpBirthday" name="inpBirthday">
+                <input type="date" [(ngModel)]="Ac.f_nacimiento" max="{{fecha_actual}}" class=" bg-dark text-white form-control" id="inpBirthday" name="inpBirthday">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
                 <label for="inpNacionality" class="form-label">Nacionality</label>
@@ -30,11 +30,11 @@
               </div>
               <div @IzquierdaDerecha  class="mb-3">
                 <label for="inpStart" class="form-label">Start</label>
-                <input type="date" [(ngModel)]="Ac.inicio_carrera" class=" bg-dark text-white form-control" id="inpStart" name="inpStart">
+                <input type="date" [(ngModel)]="Ac.inicio_carrera" max="{{fecha_actual}}" class=" bg-dark text-white form-control" id="inpStart" name="inpStart">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
                 <label for="inpFinish" class="form-label">Finish</label>
-                <input type="date" [(ngModel)]="Ac.final_carrera" class=" bg-dark text-white form-control" id="inpFinish" name="inpFinish">
+                <input type="date" [(ngModel)]="Ac.final_carrera" max="{{fecha_actual}}" class=" bg-dark text-white form-control" id="inpFinish" name="inpFinish">
               </div>
               <div class="d-grid gap-2">
                 <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="error" class="container card"  >
     <div class="row card-body align-items-center">
       <div class="col align-self-center">
@@ -58,4 +58,3 @@
       </div>
     </div>
   </div>
-  

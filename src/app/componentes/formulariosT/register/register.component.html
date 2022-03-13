@@ -38,7 +38,7 @@
             </div>
             <br>
             <label for="inpFecha" class="form-label text-white">Fecha de Nacimiento</label>
-            <input type="date" [(ngModel)]="user.f_nacimiento" name="f_nacimiento" class=" bg-dark text-white form-control"  id="inpFecha" #f_nacimiento="ngModel" required [ngClass]="{'is-valid': !f_nacimiento.invalid, 'is-invalid': f_nacimiento.invalid}" />
+            <input type="date" [(ngModel)]="user.f_nacimiento" name="f_nacimiento" max="{{fecha_actual}}" class=" bg-dark text-white form-control"  id="inpFecha" #f_nacimiento="ngModel" required [ngClass]="{'is-valid': !f_nacimiento.invalid, 'is-invalid': f_nacimiento.invalid}" />
             <div class="invalid-feedback" *ngIf="f_nacimiento.invalid && (f_nacimiento.dirty || f_nacimiento.touched)">
               <div *ngIf="f_nacimiento.errors?.['required']">
                   Introduzca una Fecha de Nacimiento
