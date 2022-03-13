@@ -1,7 +1,11 @@
-export interface Actores {
-  actores: any;
+export interface Respuesta {
+  actores?: Actores;
   actor?:   Actor;
   mensaje?: string;
+}
+
+export interface Actores {
+  actores?: Actor[]
 }
 
 export interface Actor {

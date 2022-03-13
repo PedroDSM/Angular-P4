@@ -11,7 +11,8 @@
               <div *ngIf="nombre.errors?.['required']">
                   Introduzca un Nombre Valido
               </div>
-          </div> 
+          </div>
+          <br>
             <label for="inpUsername" class="form-label text-white">Username</label>
             <input type="text" [(ngModel)]="user.username" name="username" minlength="5" class=" bg-dark text-white form-control"  id="inpUsername" #username="ngModel" placeholder="Username"  required [ngClass]="{'is-valid': !username.invalid, 'is-invalid': username.invalid}" />
             <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">
@@ -21,9 +22,10 @@
               <div *ngIf="username.errors?.['required']">
                   Introduzca un Usuario Valido
               </div>
-          </div> 
+          </div>
+          <br>
             <label for="inpEmail" class="form-label text-white">Email address</label>
-            <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
+            <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]{4,60}+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
               <div *ngIf="email.errors?.['required']">
@@ -34,20 +36,24 @@
                 {{ email.value }}
               </div>
             </div>
+            <br>
             <label for="inpFecha" class="form-label text-white">Fecha de Nacimiento</label>
             <input type="date" [(ngModel)]="user.f_nacimiento" name="f_nacimiento" class=" bg-dark text-white form-control"  id="inpFecha" #f_nacimiento="ngModel" required [ngClass]="{'is-valid': !f_nacimiento.invalid, 'is-invalid': f_nacimiento.invalid}" />
             <div class="invalid-feedback" *ngIf="f_nacimiento.invalid && (f_nacimiento.dirty || f_nacimiento.touched)">
               <div *ngIf="f_nacimiento.errors?.['required']">
                   Introduzca una Fecha de Nacimiento
               </div>
-          </div> 
+          </div>
+          <br>
           <label for="inpNacionalidad" class="form-label text-white">Nacionalidad</label>
           <input type="text" [(ngModel)]="user.nacionalidad" name="nacionalidad" class=" bg-dark text-white form-control"  id="inpNacionalidad" #nacionalidad="ngModel" required [ngClass]="{'is-valid': !nacionalidad.invalid, 'is-invalid': nacionalidad.invalid}" />
           <div class="invalid-feedback" *ngIf="nacionalidad.invalid && (nacionalidad.dirty || nacionalidad.touched)">
             <div *ngIf="nacionalidad.errors?.['required']">
                 Introduzca una Nacionalidad
             </div>
-        </div> 
+        </div>
+
+        <br>
             <label for="inpPassword" class="form-label text-white">Password</label>
             <input type="password"[(ngModel)]="user.password" name="password" minlength="8" class=" bg-dark text-white form-control"  id="inpPassword" #password="ngModel" placeholder="Password" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
             <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
@@ -58,6 +64,8 @@
                 Introduzca una contraseña por favor
               </div>
             </div>
+
+            <br>
             <label for="inpPassword2" class="form-label text-white">password_confirmation</label>
             <input type="password" [(ngModel)]="user.password_confirmation" class=" bg-dark text-white form-control"  id="inpPassword2" #password_confirmation="ngModel" name="password_confirmation" placeholder="Repeat Password" required [ngClass]="{'is-valid': !password_confirmation.invalid, 'is-invalid': password_confirmation.invalid}" />
             <div class="invalid-feedback" *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)">
@@ -69,11 +77,14 @@
                 Introduzca una Contraseña con 8 Caracteres Minimo
               </div>
             </div>
+
+            <br>
           <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
         </form>
       </div>
     </div>
   </div>
+  <br>
   <div *ngIf="error" class="container card" >
     <div class="row card-body align-items-center">
       <div class="col align-self-center">
@@ -83,4 +94,3 @@
       </div>
     </div>
   </div>
-  

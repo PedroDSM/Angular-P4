@@ -1,9 +1,11 @@
-export interface Productoras {
-  productoras: any;
+export interface Respuesta {
+  productoras?: Productoras;
   productora?: Productora;
   mensaje?:    string;
 }
-
+export interface Productoras {
+  productoras?: Productora[];
+}
 export interface Productora {
   nombre?:      string;
   presidente?:  string;

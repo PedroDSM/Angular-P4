@@ -1,28 +1,33 @@
 
 <div @Aparecer class="card text-white bg-dark mb-3" style="max-width: 18rem; border-radius: 2rem;">
-    <div class="card-header">
-        <h3>Sign In</h3></div>
-    <div class="card-body text-secondary">
-        <div class="form-outline mb-4">
-            <input type="email" id="Email" class="bg-dark text-white form-control form-control-lg" placeholder="Email"/>
+  <div class="card-header">
+      <h3>Sign In</h3></div>
+      <div class="card-body text-secondary">
+        <label for="inpEmail" class="form-label text-white">Email address</label>
+        <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
+        <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.['required']">
+            Introduzca un correo electrónico válido por favor {{ email.value }}
           </div>
-
-          <div class="form-outline mb-4">
-            <input type="password" id="Pass" class="bg-dark text-white form-control form-control-lg" placeholder="Password"/>
+          <div *ngIf="email.errors && email.errors?.['pattern']">
+            El correo electrónico no sigue el formato correcto. Sigue este ejemplo: pedro@gmail.com
+            {{ email.value }}
           </div>
-
-          <div class="form-check d-flex justify-content-start mb-4">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="Chb"
-            />
-            <label class="form-check-label" for="form1Example3">Remember password </label>
+        </div>
+        <br>
+        <label for="inpPassword" class="form-label text-white">Password</label>
+        <input type="password"[(ngModel)]="user.password" name="password" minlength="8" class=" bg-dark text-white form-control"  id="inpPassword" #password="ngModel" placeholder="Password" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
+        <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors?.['minlength']">
+            Introduzca una Contraseña con 8 Caracteres Minimo
           </div>
+          <div *ngIf="password.errors?.['required']">
+            Introduzca una contraseña por favor
+          </div>
+        </div>
+<br>
+        <button (click)="send()"class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-    </div>
   </div>
+</div>
 

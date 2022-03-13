@@ -10,6 +10,7 @@ import {
 import { ActoresService } from 'src/app/peticiones/actores.service';
 import { Router } from '@angular/router';
 import { Actor } from 'src/app/Models/Amodel';
+
 @Component({
   selector: 'app-formulario-actores',
   templateUrl: './formulario-actores.component.html',
@@ -36,7 +37,7 @@ export class FormularioActoresComponent implements OnInit {
     f_nacimiento:"",
     nacionalidad:"",
     inicio_carrera:"",
-    final_carrera:"",
+    final_carrera:null,
   };
   error = false
 
@@ -53,7 +54,9 @@ export class FormularioActoresComponent implements OnInit {
           alert(respuesta.mensaje)
       },
       error=>{
+
         this.error = true
+        console.log(error)
         alert("Ha habido un error al procesar la solicitud")
       })
 

@@ -1,30 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Actores, Actor } from '../Models/Amodel';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Actor, Respuesta } from '../Models/Amodel';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActoresService {
-  public Actores: any = []
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient, private cookieService:CookieService) {
   console.log('Servicio funcionando');
-}
-urlBase = 'http://127.0.0.1:3333/actores'
+  }
+  token = this.cookieService.get('token')
+  urlBase = 'http://127.0.0.1:3333/actores'
+
+header = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${this.token}`
+})
+
 getAll(){
-  return this.http.get<Actores>(this.urlBase)
+  return this.http.get<Respuesta>(this.urlBase, {headers:this.header})
 }
 getOne(indice:any){
-  return this.http.get<Actor>(this.urlBase+'/'+indice)
+  return this.http.get<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})
 }
 create(info:Actor){
-  console.log(info)
-  return this.http.post<Actores>(this.urlBase,info)
-} 
+  return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
+}
 delete(indice:any){
-  return this.http.delete<Actores>(this.urlBase+'/'+indice)
+  return this.http.delete<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})
 }
 update(indice:any, info: Actor){
-  return this.http.put<Actores>(this.urlBase+'/'+indice, info)
+  return this.http.put<Respuesta>(this.urlBase+'/'+indice, info, {headers:this.header})
 }
 }
