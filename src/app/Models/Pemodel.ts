@@ -1,48 +1,30 @@
-export interface Respuesta1 {
-  mensaje: string;
-  usuario: User;
-}
-export interface Respuesta0 {
-  users: Users;
+export interface Peliculas {
+  peliculas: any;
+  pelicula?: Pelicula[];
+  mensaje?:  string;
 }
 
-
-export interface Users {
-  users: User[];
+export interface Pelicula {
+  id?:               number;
+  nombre?:           string;
+  descripcion?:      string;
+  duracion?:         number;
+  calificacion?:     number;
+  clasificacion_id?: number;
+  categoria_id?:     number;
+  categoria?:        Categoria;
+  clasificacion?:    Clasificacion;
+  pelicula?:any;
 }
 
-export interface User {
-  id: number;
-  nombre: string;
-  username: string;
-  password: string;
-  password_confirmation: string;
-  email:string;
-  f_nacimiento: string;
-  nacionalidad: string;
-  usuario?:{
-    username: string;
-    email:string;
+export interface Categoria {
+  id?:     number;
+  nombre?: string;
 }
-}
-export interface User2 {
-  nombre: string;
-  username: string;
-  password: string;
-  password_confirmation: string;
-  email: string;
-  f_nacimiento: string;
-  nacionalidad: string;
-}
-export interface User3 {
-  nombre: string;
-  username: string;
-  email: string;
-  f_nacimiento: string;
-  nacionalidad: string;
-  
-  usuario?:{
-    username: string;
-    email:string;
-}
+
+export interface Clasificacion {
+  id?:          number;
+  nombre?:      string;
+  descripcion?: string;
+  edad_minima?: number;
 }

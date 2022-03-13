@@ -10,5 +10,5 @@ export interface Actor {
   nacionalidad?:   string;
   inicio_carrera?: string;
   final_carrera?:  string;
-  actor?:             any;
+  actor?:any;
 }

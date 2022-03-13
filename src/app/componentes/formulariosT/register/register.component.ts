@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
 
     this.peticion.create(this.user).subscribe(
       respuesta =>{
-          this.router.navigateByUrl('/LU');
+          this.router.navigateByUrl('/inicio');
           alert(respuesta.mensaje)
       },
       error=>{
