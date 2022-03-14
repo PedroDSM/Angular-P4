@@ -11,24 +11,21 @@
             <input type="text" id="Descripcion" class="bg-dark text-white form-control form-control-lg" placeholder="Descripcion"/>
           </div>
           <div class="form-outline mb-4">
-            <label>Duracion De Pelicula</label>
-            <input type="time" id="Duracion" class="bg-dark text-white form-control form-control-lg" placeholder="Duracion"/>
+            <label>Duracion De Pelicula (en minutos)</label>
+            <input type="number" id="Duracion" class="bg-dark text-white form-control form-control-lg" placeholder="Duracion"/>
           </div>
           <div class="form-outline mb-4">
-            <label>ClasificacionDe Pelicula</label>
-            <input type="text" id="Clasificacion" class="bg-dark text-white form-control form-control-lg" placeholder="Clasificacion"/>
+            <label>Clasificacion De Pelicula</label>
+            <select  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion"placeholder="Clasificacion">
+              <option *ngFor="let clas of clasificaciones" [value]="clas.id" selected>{{clas.nombre}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad Minima: {{clas.edad_minima}}  </option>
+            </select>
           </div>
+
           <div class="form-outline mb-4">
-            <label>Fecha de Estreno De Pelicula</label>
-            <input type="date" id="Estreno" class="bg-dark text-white form-control form-control-lg" placeholder="Fecha de Estreno"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>Presupuesto De Pelicula</label>
-            <input type="number" id="Presupuesto" class="bg-dark text-white form-control form-control-lg" placeholder="Presupuesto"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>Recaudacion De Pelicula</label>
-            <input type="number" id="Recaudacion" class="bg-dark text-white form-control form-control-lg" placeholder="Recaudacion"/>
+            <label>Categoria De Pelicula</label>
+            <select  class="form-select bg-dark text-white form-control form-control-lg" id="Categoria"placeholder="Categoria">
+              <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
+            </select>
           </div>
           <button class="btn btn-success btn-lg btn-block" type="submit">Guardar</button>
     </div>

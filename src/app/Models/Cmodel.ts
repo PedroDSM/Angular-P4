@@ -10,5 +10,4 @@ export interface Categorias {
 export interface Categoria {
   nombre?: string;
   id?:     number;
-  categoria?:any;
 }

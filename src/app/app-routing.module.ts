@@ -23,32 +23,33 @@ import { ClasificacionDetalleComponent } from './componentes/D/clasificacion-det
 import { CategoriaDetalleComponent } from './componentes/D/categoria-detalle/categoria-detalle.component';
 import { ProductoraDetalleComponent } from './componentes/D/productora-detalle/productora-detalle.component';
 import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detalle.component';
+import { TokenGuard } from './guards/token.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  {path: 'FCA', component: CategoriasComponent},
-  { path: 'FA', component: FormularioActoresComponent },
-  { path: 'FC', component: FormularioClasificacionesComponent },
-  { path: 'FI', component: FormularioIdiomasComponent },
-  { path: 'FP', component: FormularioPeliculasComponent },
-  { path: 'FPR', component: FormularioProductorasComponent },
-  { path: 'LA', component: ListaActoresComponent },
-  { path: 'LC', component: ListaClasificacionesComponent },
-  { path: 'LD', component: ListaDirectoresComponent },
-  { path: 'LP', component: ListaPeliculasComponent },
-  { path: 'LPR', component: ListaProductorasComponent },
-  { path: 'LCA', component: ListaCategoriasComponent },
-  { path: 'LI', component: ListaIdiomasComponent },
-  { path: 'LU/:id/DE', component: DetallesComponent },
-  { path: 'LI/:id/DI', component: IdiomasDetalleComponent },
-  { path: 'LC/:id/DC', component: ClasificacionDetalleComponent},
-  { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent},
-  { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent},
-  { path: 'LA/:id/DA', component: ActorDetalleComponent},
+  { path:'',redirectTo:'/login',pathMatch:'full'},
+  { path: 'inicio', component: InicioComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'FCA', component: CategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'FA', component: FormularioActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'FC', component: FormularioClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'FI', component: FormularioIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'FP', component: FormularioPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'FPR', component: FormularioProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LA', component: ListaActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LC', component: ListaClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LD', component: ListaDirectoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LP', component: ListaPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LPR', component: ListaProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LU/:id/DE', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LI/:id/DI', component: IdiomasDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LC/:id/DC', component: ClasificacionDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
 ];
 
 @NgModule({

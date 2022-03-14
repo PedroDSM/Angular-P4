@@ -48,8 +48,8 @@ export class RegisterComponent implements OnInit {
   fecha_actual:Date|string
 
   constructor(private peticion: PeticionesService, private router: Router) {
-    this.fecha_actual = new Date()
-    this.fecha_actual = formatDate(this.fecha_actual!, 'yyyy-MM-dd', 'en')
+    this.fecha_actual  =this.user.f_nacimiento = new Date()
+    this.user.f_nacimiento = this.fecha_actual = formatDate(this.fecha_actual!, 'yyyy-MM-dd', 'en')
   }
 
   ngOnInit(): void {

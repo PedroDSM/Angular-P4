@@ -15,7 +15,7 @@ export interface User {
   password?: string;
   password_confirmation?: string;
   email?:string;
-  f_nacimiento?: string;
+  f_nacimiento?: string|Date|number;
   nacionalidad?: string;
   cuenta?:{
     username: string;
