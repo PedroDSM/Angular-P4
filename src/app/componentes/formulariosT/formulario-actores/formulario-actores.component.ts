@@ -37,7 +37,7 @@ export class FormularioActoresComponent implements OnInit {
     f_nacimiento:"",
     nacionalidad:"",
     inicio_carrera:"",
-    final_carrera:null,
+    final_carrera:"",
   };
   error = false
 

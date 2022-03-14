@@ -1,36 +1,64 @@
-<div class="card text-white bg-dark mb-3" style="max-width: 50rem; border-radius: 2rem;">
-    <div class="card-header">
-        <h3>Peliculas</h3></div>
-    <div class="card-body text-secondary">
-        <div class="form-outline mb-4">
-            <label>Nombre De Pelicula</label>
-            <input type="text" id="Nombre" class="bg-dark text-white form-control form-control-lg" placeholder="Nombre"/>
+<div @Aparecer class="container card bg-dark"  style="border-radius: 2rem;" >
+  <div class="row card-body align-items-center">
+    <div class="col align-self-center">
+      <form #forma="ngForm">
+          <label for="inpName" class="form-label text-white">Nombre</label>
+          <input type="text" [(ngModel)]="Pe.nombre" name="name" minlength="5" class=" bg-dark text-white form-control"  id="inpName" #nombre="ngModel" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" placeholder="Name"/>
+          <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors?.['minlength']">
+                Introduzca un Nombre con 5 Caracteres Minimo
+            </div>
+            <div *ngIf="nombre.errors?.['required']">
+                Introduzca un Nombre Valido
+            </div>
+        </div>
+          <label for="inpDescripcion" class="form-label text-white">Descripcion</label>
+          <input type="text" [(ngModel)]="Pe.descripcion" name="descripcion" class=" bg-dark text-white form-control"  id="inpDescripcion" #descripcion="ngModel" required [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}" />
+          <div class="invalid-feedback" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+            <div *ngIf="descripcion.errors?.['required']">
+                Introduzca una Descripcion
+            </div>
+        </div>
+        <label for="inpDuracion" class="form-label text-white">Duracion</label>
+        <input type="number" [(ngModel)]="Pe.duracion" name="duracion" class=" bg-dark text-white form-control"  id="inpDuracion" #duracion="ngModel" required [ngClass]="{'is-valid': !duracion.invalid, 'is-invalid': duracion.invalid}" />
+        <div class="invalid-feedback" *ngIf="duracion.invalid && (duracion.dirty || duracion.touched)">
+          <div *ngIf="duracion.errors?.['required']">
+              Introduzca una Duracion
           </div>
-          <div class="form-outline mb-4">
-            <label>Descripcion De Pelicula</label>
-            <input type="text" id="Descripcion" class="bg-dark text-white form-control form-control-lg" placeholder="Descripcion"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>Duracion De Pelicula</label>
-            <input type="time" id="Duracion" class="bg-dark text-white form-control form-control-lg" placeholder="Duracion"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>ClasificacionDe Pelicula</label>
-            <input type="text" id="Clasificacion" class="bg-dark text-white form-control form-control-lg" placeholder="Clasificacion"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>Fecha de Estreno De Pelicula</label>
-            <input type="date" id="Estreno" class="bg-dark text-white form-control form-control-lg" placeholder="Fecha de Estreno"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>Presupuesto De Pelicula</label>
-            <input type="number" id="Presupuesto" class="bg-dark text-white form-control form-control-lg" placeholder="Presupuesto"/>
-          </div>
-          <div class="form-outline mb-4">
-            <label>Recaudacion De Pelicula</label>
-            <input type="number" id="Recaudacion" class="bg-dark text-white form-control form-control-lg" placeholder="Recaudacion"/>
-          </div>
-          <button class="btn btn-success btn-lg btn-block" type="submit">Guardar</button>
+      </div>
+      <label for="inpCalificacion" class="form-label text-white">Calificacion</label>
+      <input type="number" [(ngModel)]="Pe.calificacion" name="Inicio" class=" bg-dark text-white form-control"  id="inpCalificacion" #calificacion="ngModel" required [ngClass]="{'is-valid': !calificacion.invalid, 'is-invalid': calificacion.invalid}" />
+      <div class="invalid-feedback" *ngIf="calificacion.invalid && (calificacion.dirty || calificacion.touched)">
+        <div *ngIf="calificacion.errors?.['required']">
+            Introduzca una Calificacion
+        </div>
+    </div>
+    <label for="inpClasificacion" class="form-label text-white">Clasificacion</label>
+    <input type="text" [(ngModel)]="Pe.clasificacion" name="clasificacion" class=" bg-dark text-white form-control"  id="inpClasificacion" #clasificacion="ngModel" required [ngClass]="{'is-valid': !clasificacion.invalid, 'is-invalid': clasificacion.invalid}" />
+    <div class="invalid-feedback" *ngIf="clasificacion.invalid && (clasificacion.dirty || clasificacion.touched)">
+      <div *ngIf="clasificacion.errors?.['required']">
+          Introduzca una Clasificacion
+      </div>
+  </div>
+  <label for="inpCategoria" class="form-label text-white">Categoria</label>
+  <input type="text" [(ngModel)]="Pe.categoria" name="Categoria" class=" bg-dark text-white form-control"  id="inpCategoria" #categoria="ngModel" required [ngClass]="{'is-valid': !categoria.invalid, 'is-invalid': categoria.invalid}" />
+  <div class="invalid-feedback" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
+    <div *ngIf="categoria.errors?.['required']">
+        Introduzca una Categoria
+    </div>
+</div>
+        <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
+      </form>
     </div>
   </div>
+</div>
+<div *ngIf="error" class="container card" >
+  <div class="row card-body align-items-center">
+    <div class="col align-self-center">
+      <div class="alert alert-danger">
+        NO SE PUDO CREAR EL RECURSO, VUELVA A INTENTARLO
+      </div>
+    </div>
+  </div>
+</div>
 

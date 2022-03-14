@@ -8,8 +8,8 @@ export interface Pelicula {
   id?:               number;
   nombre?:           string;
   descripcion?:      string;
-  duracion?:         number;
-  calificacion?:     number;
+  duracion?:         string;
+  calificacion?:     string;
   clasificacion_id?: number;
   categoria_id?:     number;
   categoria?:        Categoria;
@@ -26,5 +26,5 @@ export interface Clasificacion {
   id?:          number;
   nombre?:      string;
   descripcion?: string;
-  edad_minima?: number;
+  edad_minima?: string;
 }
