@@ -4,26 +4,30 @@
     <div class="card-body text-secondary">
         <div class="form-outline mb-4">
             <label>Nombre De Pelicula</label>
-            <input type="text" id="Nombre" class="bg-dark text-white form-control form-control-lg" placeholder="Nombre"/>
+            <input [(ngModel)] = "pelicula_nueva.nombre" type="text" id="Nombre" class="bg-dark text-white form-control form-control-lg" placeholder="Nombre"/>
           </div>
           <div class="form-outline mb-4">
             <label>Descripcion De Pelicula</label>
-            <input type="text" id="Descripcion" class="bg-dark text-white form-control form-control-lg" placeholder="Descripcion"/>
+            <input [(ngModel)] = "pelicula_nueva.descripcion" type="text" id="Descripcion" class="bg-dark text-white form-control form-control-lg" placeholder="Descripcion"/>
           </div>
           <div class="form-outline mb-4">
             <label>Duracion De Pelicula (en minutos)</label>
-            <input type="number" id="Duracion" class="bg-dark text-white form-control form-control-lg" placeholder="Duracion"/>
+            <input [(ngModel)] = "pelicula_nueva.duracion" min="0" type="number" id="Duracion" class="bg-dark text-white form-control form-control-lg" placeholder="Duracion"/>
+          </div>
+          <div class="form-outline mb-4">
+            <label>Calificacion De Pelicula</label>
+            <input [(ngModel)] = "pelicula_nueva.calificacion" min="1"[max]="100" type="number" id="Calificacion" class="bg-dark text-white form-control form-control-lg" placeholder="Calificacion"/>
           </div>
           <div class="form-outline mb-4">
             <label>Clasificacion De Pelicula</label>
-            <select  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion"placeholder="Clasificacion">
+            <select [(ngModel)] = "pelicula_nueva.clasificacion_id"  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion"placeholder="Clasificacion">
               <option *ngFor="let clas of clasificaciones" [value]="clas.id" selected>{{clas.nombre}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad Minima: {{clas.edad_minima}}  </option>
             </select>
           </div>
 
           <div class="form-outline mb-4">
             <label>Categoria De Pelicula</label>
-            <select  class="form-select bg-dark text-white form-control form-control-lg" id="Categoria"placeholder="Categoria">
+            <select  [(ngModel)] = "pelicula_nueva.categoria_id" class="form-select bg-dark text-white form-control form-control-lg" id="Categoria"placeholder="Categoria">
               <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
             </select>
           </div>

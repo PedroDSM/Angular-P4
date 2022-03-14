@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private peticion: PeticionesService,private cookieService:CookieService, private router: Router) { }
   ngOnInit(): void {
   }
+ logout(){
 
+  this.peticion.logout().subscribe(
+    respuesta =>{
+        this.router.navigateByUrl('/inicio');
+        alert(respuesta.mensaje)
+    },
+    error=>{
+      alert(error.error.error)
+    })
+
+ }
 }

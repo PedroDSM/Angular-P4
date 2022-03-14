@@ -24,6 +24,7 @@ import { CategoriaDetalleComponent } from './componentes/D/categoria-detalle/cat
 import { ProductoraDetalleComponent } from './componentes/D/productora-detalle/productora-detalle.component';
 import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detalle.component';
 import { TokenGuard } from './guards/token.guard';
+import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LP/:id/DP', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
 ];
 
 @NgModule({

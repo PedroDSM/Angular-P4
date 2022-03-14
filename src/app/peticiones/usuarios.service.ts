@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Respuesta, User } from '../Models/Umodel';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeticionesService {
   public usuarios: any = []
-  constructor(private http: HttpClient) {
+  token = 'x'
+  constructor(private http: HttpClient, private cookieService:CookieService) {
     console.log('Servicio funcionando');
   }
   urlusers = environment.urlbase+'/usuarios'
   logi = environment.urlbase+'/login'
+  logo = environment.urlbase+'/logout'
   getAll(){
     return this.http.get<Respuesta>(this.urlusers)
   }
@@ -31,5 +34,14 @@ export class PeticionesService {
 
   login(info: User){
     return this.http.post<Respuesta>(this.logi, info)
+  }
+  logout(){
+    
+    this.token = this.cookieService.get('token')
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.post<Respuesta>(this.logo, {headers:header})
   }
 }

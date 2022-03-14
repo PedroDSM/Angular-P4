@@ -30,13 +30,13 @@ export class FormularioPeliculasComponent implements OnInit {
     this.categoriasPet.getAll().subscribe(respuesta=>{this.categorias = respuesta.categorias!});
     this.clasifPet.getAll().subscribe(respuesta=>{this.clasificaciones = respuesta.clasificaciones!});
   }
-
+ 
   ngOnInit(): void {
   }
   enviar(){
     this.peticion.create(this.pelicula_nueva).subscribe(
       respuesta =>{
-          this.router.navigateByUrl('/LA');
+          this.router.navigateByUrl('/LP');
           alert(respuesta.mensaje)
       },
       error=>{
