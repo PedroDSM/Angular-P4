@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LP/:id/DP', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
+  { path: 'LP/:id/DPE', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
 ];
 
 @NgModule({

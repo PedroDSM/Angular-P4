@@ -37,7 +37,7 @@ export class ListaPeliculasComponent implements OnInit {
   ngOnInit(): void {
     this.peticion.getAll().subscribe(
       respuesta=>{
-        this.peliculas = respuesta.pelicula
+        this.peliculas = respuesta.peliculas
       });
   }
   leer(id:any){

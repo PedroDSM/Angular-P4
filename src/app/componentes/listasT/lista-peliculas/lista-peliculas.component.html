@@ -2,20 +2,20 @@
     <div class="row">
       <div class="col-12 align-self-center table-responsive">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col" *ngFor="let P of peliculas">
+          <div class="col" *ngFor="let Pe of peliculas">
             <div @Aparecer class="card">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(P.id)"></button>
+              <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(Pe.id)"></button>
             </div>
               <div class="card-body">
-                <p class="card-text">Id: {{P.id}}</p>
-                <p class="card-text">Name: {{P.nombre}}</p>
-                <p class="card-text">Description: {{P.descripcion}}</p>
-                <p class="card-text">Qualification: {{P.calificacion}}</p>
-                <p class="card-text">Duration: {{P.duracion}}</p>
-                <p class="card-text">Category: {{P.pelis.categoria}}</p>
-                <p class="card-text">Clasification: {{P.pelis.clasificacion}}</p>
-                <p class="card-text"><a (click)="leer(P.id)" class="btn btn-info" >Detalles</a></p>
+                <p class="card-text">Id: {{Pe.id}}</p>
+                <p class="card-text">Name: {{Pe.nombre}}</p>
+                <p class="card-text">Description: {{Pe.descripcion}}</p>
+                <p class="card-text">Qualification: {{Pe.calificacion}}</p>
+                <p class="card-text">Duration: {{Pe.duracion}}</p>
+                <p class="card-text">Category: {{Pe.categoria.nombre}}</p>
+                <p class="card-text">Clasification: {{Pe.clasificacion.nombre}}</p>
+                <p class="card-text"><a (click)="leer(Pe.id)" class="btn btn-info" >Detalles</a></p>
               </div>
             </div>
         </div>
