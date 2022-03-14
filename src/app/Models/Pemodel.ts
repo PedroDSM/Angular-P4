@@ -1,0 +1,65 @@
+export interface Respuesta {
+  peliculas?: Pelicula[];
+  pelicula?: Pelicula;
+  mensaje?:  string;
+}
+
+export interface Pelicula {
+  id?:            number;
+  nombre?:        string;
+  descripcion?:   string;
+  duracion?:      number;
+  calificacion?:  number;
+  categoria_id?:  number|null;
+  clasificacion_id?: number|null;
+  categoria?:     null|Categoria;
+  clasificacion?: null|Clasificacion;
+  idioma?:        Idioma[];
+  productora?:    Productora[];
+  papeles?:       Papeles[];
+}
+
+export interface Idioma {
+  id?:     number;
+  nombre?: string;
+}
+
+export interface Papeles {
+  id?:    number;
+  papel?: string;
+  actor?: Actor;
+}
+
+export interface Actor {
+  id?:             number;
+  inicio_carrera?: Date;
+  final_carrera?:  null;
+  persona?:        Persona;
+}
+
+export interface Persona {
+  id?:           number;
+  nombre?:       string;
+  f_nacimiento?: Date;
+  nacionalidad?: string;
+}
+
+export interface Productora {
+  id?:          number;
+  nombre?:      string;
+  presidente?:  string;
+  propietario?: string;
+  sitio_web?:   string;
+}
+
+export interface Categoria {
+  id?:     number;
+  nombre?: string;
+}
+
+export interface Clasificacion {
+  id?:          number;
+  nombre?:      string;
+  descripcion?: string;
+  edad_minima?: number;
+}

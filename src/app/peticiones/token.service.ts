@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class TokenService {
     console.log('Servicio funcionando');
   }
 
-  urlBase = 'http://127.0.0.1:3333/verificar_token'
+  urlBase = environment.urlbase+'/verificar_token'
 
 
   validar(){

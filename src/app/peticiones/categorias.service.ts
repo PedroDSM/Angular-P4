@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Categoria, Categorias, Respuesta } from '../Models/Cmodel';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CategoriasService {
   console.log('Servicio funcionando');
   }
   token = this.cookieService.get('token')
-  urlBase = 'http://127.0.0.1:3333/categorias'
+  urlBase = environment.urlbase+'/categorias'
 
   header = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -24,7 +25,6 @@ export class CategoriasService {
     return this.http.get<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})
   }
   create(info:Categoria){
-    console.log(info)
     return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
   }
   delete(indice:any){

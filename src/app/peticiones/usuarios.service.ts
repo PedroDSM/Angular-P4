@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Respuesta, User } from '../Models/Umodel';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,8 @@ export class PeticionesService {
   constructor(private http: HttpClient) {
     console.log('Servicio funcionando');
   }
-  urlBase = 'http://127.0.0.1:3333/'
-  urlusers = this.urlBase+'usuarios'
-  logi = this.urlBase+'login'
+  urlusers = environment.urlbase+'/usuarios'
+  logi = environment.urlbase+'/login'
   getAll(){
     return this.http.get<Respuesta>(this.urlusers)
   }
@@ -20,7 +20,6 @@ export class PeticionesService {
     return this.http.get<Respuesta>(this.urlusers+'/'+indice)
   }
   create(info:User){
-    console.log(info)
     return this.http.post<Respuesta>(this.urlusers,info)
   }
   delete(indice:any){

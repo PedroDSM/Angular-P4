@@ -27,7 +27,7 @@
               <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
             </select>
           </div>
-          <button class="btn btn-success btn-lg btn-block" type="submit">Guardar</button>
+          <button (click)="enviar()" class="btn btn-success btn-lg btn-block" type="submit">Guardar</button>
     </div>
   </div>
 

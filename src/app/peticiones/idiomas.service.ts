@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Idiomas, Idioma, Respuesta } from '../Models/Imodel';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class IdiomasService {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${this.token}`
   })
-  urlBase = 'http://127.0.0.1:3333/idiomas'
+  urlBase = environment.urlbase+'/idiomas'
   getAll(){
     return this.http.get<Respuesta>(this.urlBase, {headers:this.header})
   }
@@ -25,7 +26,6 @@ export class IdiomasService {
     return this.http.get<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})
   }
   create(info:Idioma){
-    console.log(info)
     return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
   }
   delete(indice:any){
