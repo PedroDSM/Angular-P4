@@ -36,12 +36,14 @@ export class PeticionesService {
     return this.http.post<Respuesta>(this.logi, info)
   }
   logout(){
-    
+
     this.token = this.cookieService.get('token')
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
     })
+    console.log(this.token)
+    console.log(header)
     return this.http.post<Respuesta>(this.logo, {headers:header})
   }
 }

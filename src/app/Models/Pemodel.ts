@@ -10,6 +10,7 @@ export interface Pelicula {
   descripcion?:   string;
   duracion?:      number;
   calificacion?:  number;
+  imagen?:        any;
   categoria_id?:  number|null;
   clasificacion_id?: number|null;
   categoria?:     null|Categoria;

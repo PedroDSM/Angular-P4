@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from 'src/app/peticiones/token.service';
 import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 
 @Component({
@@ -10,11 +11,22 @@ import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private peticion: PeticionesService,private cookieService:CookieService, private router: Router) { }
+  isLogged = false;
+  constructor(private peticion: PeticionesService,private t :TokenService, private router: Router) {
+    this.estado()
+  }
   ngOnInit(): void {
   }
+estado(){
+  this.t.validar().subscribe(
+    respuesta=>{
+      this.isLogged = true
+    },error=>{
+      this.isLogged = false
+    }
+  )
+}
  logout(){
-
   this.peticion.logout().subscribe(
     respuesta =>{
         this.router.navigateByUrl('/inicio');
@@ -23,6 +35,6 @@ export class NavBarComponent implements OnInit {
     error=>{
       alert(error.error.error)
     })
-
+    this.estado()
  }
 }
