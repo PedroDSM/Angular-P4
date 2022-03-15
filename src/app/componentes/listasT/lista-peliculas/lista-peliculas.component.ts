@@ -35,6 +35,9 @@ export class ListaPeliculasComponent implements OnInit {
   constructor(private peticion: PeliculasService, private router: Router) { }
 
   ngOnInit(): void {
+    this.leeerLista()
+  }
+  leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.peliculas = respuesta.peliculas!
@@ -48,7 +51,7 @@ export class ListaPeliculasComponent implements OnInit {
       respuesta=>{
           this.peliculas = respuesta.pelicula
           alert(respuesta.mensaje)
-          this.router.navigateByUrl('/LP')
+          this.leeerLista()
       },
       error=>{
         this.error = true

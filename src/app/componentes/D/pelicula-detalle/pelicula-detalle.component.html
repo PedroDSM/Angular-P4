@@ -2,20 +2,43 @@
     <div class="row">
       <div class="col">
         <div class="card">
-          <div class="card-body">
-            <div *ngIf="!actualizar">
-              <h3 @DerechaIzquierda class="card-text">Name: {{Peli.nombre}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Duration: {{Peli.duracion}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Description: {{Peli.descripcion}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Rate: {{Peli.calificacion}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Clasification: {{Cla.nombre!}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Category: {{Cat.nombre}}</h3> <br>
+            <div class="card-header">
+              <h2>Name: {{Peli.nombre}}</h2>
+            </div>
+          <div  *ngIf="!actualizar"  class="card-body">
+            
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="../../../../assets/imagen.png" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <p class="card-text" align="left">Description: {{Peli.descripcion}}</p>
+                  <p class="card-text"align="left">Duration: {{Peli.duracion}}</p>
+                  <p class="card-text"align="left">Rate: {{Peli.calificacion}}</p>
+                  <p class="card-text"align="left">Clasification: {{Cla.nombre!}}</p>
+                  <p class="card-text"align="left">Category: {{Cat.nombre}}</p>
+                  <!-- <h3 align="left">Personajes</h3>
+                  <div *ngFor="let p of pap" >
+                    <p align="left">{{p.papel}}: Interpretado por {{p.actor!.persona!.nombre}}</p>
+                  </div>
+                  <h3 align="left">Idiomas</h3>
+                  <div *ngFor="let i of idiomas" >
+                    <p align="left">{{i.nombre}}</p>
+                  </div>
+                  <h3 align="left">Productoras</h3>
+                  <div *ngFor="let prod of productoras" >
+                    <p align="left">{{prod.nombre}}</p>
+                  </div> -->
+                </div>
+              </div>
+            </div>
               <div class="d-grid gap-2">
 
                 <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
               </div>
             </div>
-            <div *ngIf="actualizar">
+            <div class="card-body" *ngIf="actualizar">
   
               <div @IzquierdaDerecha  class="mb-3">
                 <label for="inpName" class="form-label">Name</label>
@@ -41,6 +64,9 @@
                 <label for="inpCategory" class="form-label">Category</label>
                 <input type="text" [(ngModel)]="Cat.nombre" class=" bg-dark text-white form-control" id="inpCategory" name="inpCategory">
               </div>
+              
+
+              <br>
               <div class="d-grid gap-2">
                 <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
                 <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
@@ -52,7 +78,6 @@
         </div>
       </div>
     </div>
-  </div>
   
   <div *ngIf="error" class="container card"  >
     <div class="row card-body align-items-center">

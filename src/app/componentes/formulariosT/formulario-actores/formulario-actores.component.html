@@ -34,11 +34,7 @@
           </div>
       </div>
       <label for="inpFinal" class="form-label text-white">Final de Carrera</label>
-      <input type="date" [(ngModel)]="ac.final_carrera" name="Fin" class=" bg-dark text-white form-control"  id="inpFinal" #final_carrera="ngModel"required [ngClass]="{'is-valid': !final_carrera.invalid, 'is-invalid': final_carrera.invalid}" />
-      <div class="invalid-feedback" *ngIf="final_carrera.invalid && (final_carrera.dirty || final_carrera.touched)">
-        <div *ngIf="final_carrera.errors?.['required']">
-            Introduzca una Fecha en la que Termino
-        </div></div>
+      <input type="date" [(ngModel)]="ac.final_carrera" name="Fin" class=" bg-dark text-white form-control"  id="inpFinal"  />
           <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
         </form>
       </div>

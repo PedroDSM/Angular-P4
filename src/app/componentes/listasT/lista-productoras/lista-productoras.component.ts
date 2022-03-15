@@ -34,6 +34,9 @@ export class ListaProductorasComponent implements OnInit {
   constructor(private peticion: ProductorasService, private router: Router) { }
 
   ngOnInit(): void {
+    this.leeerLista()
+  }
+  leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.productoras = respuesta.productoras
@@ -47,7 +50,7 @@ export class ListaProductorasComponent implements OnInit {
       respuesta=>{
           this.productoras = respuesta.productora
           alert(respuesta.mensaje)
-          this.router.navigateByUrl('/LPR')
+          this.leeerLista()
       },
       error=>{
         this.error = true

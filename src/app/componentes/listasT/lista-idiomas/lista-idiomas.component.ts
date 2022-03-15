@@ -34,6 +34,9 @@ export class ListaIdiomasComponent implements OnInit {
   constructor(private peticion: IdiomasService, private router: Router) { }
 
   ngOnInit(): void {
+    this.leeerLista()
+  }
+  leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.idiomas = respuesta.idiomas
@@ -47,7 +50,7 @@ export class ListaIdiomasComponent implements OnInit {
       respuesta=>{
           this.idiomas = respuesta.idioma
           alert(respuesta.mensaje)
-          this.router.navigateByUrl('/LI')
+          this.leeerLista()
       },
       error=>{
         this.error = true

@@ -35,6 +35,9 @@ export class ListaCategoriasComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.leeerLista()
+  }
+  leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.categorias = respuesta.categorias
@@ -48,7 +51,7 @@ export class ListaCategoriasComponent implements OnInit {
       respuesta=>{
           this.categorias = respuesta.categoria
           alert(respuesta.mensaje)
-          this.router.navigateByUrl('/LCA')
+          this.leeerLista()
       },
       error=>{
         this.error = true

@@ -8,6 +8,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-lista-actores',
   templateUrl: './lista-actores.component.html',
@@ -34,6 +35,9 @@ export class ListaActoresComponent implements OnInit {
   constructor(private peticion: ActoresService, private router: Router) { }
 
   ngOnInit(): void {
+    this.leeerLista()
+  }
+  leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.actors = respuesta.actores
@@ -47,7 +51,7 @@ export class ListaActoresComponent implements OnInit {
       respuesta=>{
           this.actors = respuesta.actores
           alert(respuesta.mensaje)
-          this.router.navigateByUrl('/LA')
+          this.leeerLista()
       },
       error=>{
         this.error = true

@@ -35,6 +35,9 @@ export class ListaClasificacionesComponent implements OnInit {
   constructor(private peticion: ClasificacionesService, private router: Router) { }
 
   ngOnInit(): void {
+    this.leeerLista()
+  }
+  leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.clasificaciones = respuesta.clasificaciones
@@ -48,7 +51,7 @@ export class ListaClasificacionesComponent implements OnInit {
       respuesta=>{
           this.clasificaciones = respuesta.clasificacion
           alert(respuesta.mensaje)
-          this.router.navigateByUrl('/LC')
+          this.leeerLista()
       },
       error=>{
         this.error = true

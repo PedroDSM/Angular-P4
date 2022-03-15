@@ -36,4 +36,32 @@ export class PeliculasService {
   update(indice:any, info: any){
     return this.http.put<Respuesta>(this.urlBase+'/'+indice, info, {headers:this.header})
   }
+  
+  Aactor(info:any,indice:any){
+    console.log(info)
+    return this.http.post<Respuesta>(this.urlBase+'/'+indice+'/agregar_papel',info, {headers:this.header})
+  }
+  
+  Aidioma(info:any,indice:any){
+    console.log(info)
+    return this.http.post<Respuesta>(this.urlBase+'/'+indice+'/agregar_idioma',info, {headers:this.header})
+  }
+  
+  Aproductora(info:any,indice:any){
+    console.log(info)
+    return this.http.post<Respuesta>(this.urlBase+'/'+indice+'/agregar_productora',info, {headers:this.header})
+  }
+  
+  Eactor(info:any){
+    console.log(info)
+    return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
+  }
+  Eidioma(info:any){
+    console.log(info)
+    return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
+  }
+  Eproductora(info:any){
+    console.log(info)
+    return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
+  }
 }
