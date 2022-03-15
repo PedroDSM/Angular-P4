@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IdiomasService } from 'src/app/peticiones/idiomas.service';
 import {
   trigger,
   state,
@@ -8,7 +7,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { Pelicula } from 'src/app/Models/Pemodel'
+import { Pelicula, Categoria, Clasificacion } from 'src/app/Models/Pemodel'
 import { PeliculasService } from 'src/app/peticiones/peliculas.service';
 
 @Component({
@@ -70,12 +69,13 @@ export class PeliculaDetalleComponent implements OnInit {
 
   id = 0
   public Peli: Pelicula = {
-    nombre: '',
-    descripcion:"",
-    duracion:0,
-    calificacion:0,
   }
-  
+  public Cat:Categoria ={
+  }
+  public Cla:Clasificacion = {
+    nombre:"",
+  }
+
   error = false
   actualizar = false
   constructor(private peticion: PeliculasService, private router: Router,private activatedRouter: ActivatedRoute) {
@@ -89,6 +89,9 @@ export class PeliculaDetalleComponent implements OnInit {
     this.peticion.getOne(id).subscribe(
       respuesta=>{
         this.Peli = respuesta.pelicula!
+        this.Cat = respuesta.pelicula!.categoria!
+        this.Cla = respuesta.pelicula!.clasificacion!
+        console.log(respuesta.pelicula!)
       })
   }
   modificar(){

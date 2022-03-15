@@ -5,6 +5,11 @@
           <div class="card-body">
             <div *ngIf="!actualizar">
               <h3 @DerechaIzquierda class="card-text">Name: {{Peli.nombre}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Duration: {{Peli.duracion}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Description: {{Peli.descripcion}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Rate: {{Peli.calificacion}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Clasification: {{Cla.nombre!}}</h3> <br>
+              <h3 @DerechaIzquierda class="card-text">Category: {{Cat.nombre}}</h3> <br>
               <div class="d-grid gap-2">
 
                 <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
@@ -16,13 +21,33 @@
                 <label for="inpName" class="form-label">Name</label>
                 <input type="text" [(ngModel)]="Peli.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
               </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpDescription" class="form-label">Description</label>
+                <input type="text" [(ngModel)]="Peli.descripcion" class=" bg-dark text-white form-control" id="inpDescription" name="inpDescription">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpDuration" class="form-label">Duration</label>
+                <input type="text" [(ngModel)]="Peli.duracion" class=" bg-dark text-white form-control" id="inpDuration" name="inpDuration">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpRate" class="form-label">Rate</label>
+                <input type="text" [(ngModel)]="Peli.calificacion" class=" bg-dark text-white form-control" id="inpRate" name="inpRate">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpClasification" class="form-label">Clasification</label>
+                <input type="text" [(ngModel)]="Cla.nombre" class=" bg-dark text-white form-control" id="inpClasification" name="inpClasification">
+              </div>
+              <div @IzquierdaDerecha  class="mb-3">
+                <label for="inpCategory" class="form-label">Category</label>
+                <input type="text" [(ngModel)]="Cat.nombre" class=" bg-dark text-white form-control" id="inpCategory" name="inpCategory">
+              </div>
               <div class="d-grid gap-2">
                 <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
                 <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
               </div>
             </div>
             <br>
-            <a routerLink="/LI" class="btn btn-dark" >Volver</a>
+            <a routerLink="/LP" class="btn btn-dark" >Volver</a>
           </div>
         </div>
       </div>

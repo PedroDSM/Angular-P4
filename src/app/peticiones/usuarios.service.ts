@@ -35,13 +35,14 @@ export class PeticionesService {
   login(info: User){
     return this.http.post<Respuesta>(this.logi, info)
   }
+
   logout(){
-    
     this.token = this.cookieService.get('token')
-    let header = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
-    })
-    return this.http.post<Respuesta>(this.logo, {headers:header})
+    const header = new HttpHeaders()
+    .set( 'Content-Type','application/json')
+    .set('Authorization', 'Bearer '+this.token)
+    this.cookieService.delete("token");
+    this.cookieService.deleteAll();
+   return this.http.get<Respuesta>(environment.urlbase+'/logout', {headers:header})
   }
 }

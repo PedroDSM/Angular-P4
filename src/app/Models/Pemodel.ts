@@ -12,8 +12,8 @@ export interface Pelicula {
   calificacion?:  number;
   categoria_id?:  number|null;
   clasificacion_id?: number|null;
-  categoria?:     null|Categoria;
-  clasificacion?: null|Clasificacion;
+  categoria?:     Categoria;
+  clasificacion?: Clasificacion;
   idioma?:        Idioma[];
   productora?:    Productora[];
   papeles?:       Papeles[];
@@ -55,6 +55,7 @@ export interface Productora {
 export interface Categoria {
   id?:     number;
   nombre?: string;
+  categoria?:any;
 }
 
 export interface Clasificacion {
