@@ -73,9 +73,7 @@ export class PeliculaDetalleComponent implements OnInit {
   public Cat:Categoria ={
   }
   public Cla:Clasificacion = {
-    nombre:"",
   }
-
   error = false
   actualizar = false
   constructor(private peticion: PeliculasService, private router: Router,private activatedRouter: ActivatedRoute) {

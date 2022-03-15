@@ -18,7 +18,7 @@ export class FormularioPeliculasComponent implements OnInit {
   pelicula_nueva: Pelicula ={
     nombre:        '',
     descripcion:   '',
-    duracion:      0,
+    duracion: 0,
     calificacion:  0,
     categoria_id:     null,
     clasificacion_id: null
