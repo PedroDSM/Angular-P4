@@ -19,6 +19,12 @@ export interface Pelicula {
   papeles?:       Papeles[];
 }
 
+export interface Categoria {
+  id?:     number;
+  nombre?: string;
+  categoria?:any;
+}
+
 export interface Idioma {
   id?:     number;
   nombre?: string;
@@ -50,12 +56,6 @@ export interface Productora {
   presidente?:  string;
   propietario?: string;
   sitio_web?:   string;
-}
-
-export interface Categoria {
-  id?:     number;
-  nombre?: string;
-  categoria?:any;
 }
 
 export interface Clasificacion {
