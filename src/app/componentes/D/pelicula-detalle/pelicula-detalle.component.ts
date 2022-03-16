@@ -12,6 +12,8 @@ import { PeliculasService } from 'src/app/peticiones/peliculas.service';
 import { ActoresService } from 'src/app/peticiones/actores.service';
 import { IdiomasService } from 'src/app/peticiones/idiomas.service';
 import { ProductorasService } from 'src/app/peticiones/productoras.service';
+import { ClasificacionesService } from 'src/app/peticiones/clasificaciones.service';
+import { CategoriasService } from 'src/app/peticiones/categorias.service';
 
 @Component({
   selector: 'app-pelicula-detalle',
@@ -74,24 +76,16 @@ export class PeliculaDetalleComponent implements OnInit {
   public Peli: Pelicula = {}
   public Cat:Categoria ={}
   public Cla:Clasificacion = {}
-  // public pap:Papeles[]=[]
-  // public idiomas: Idioma[] =[]
-  // public productoras: Productora[] =[]
-  // public idiomaS: any
-  // public productoraS: any
-  // public papelS: any
-  // public listIdiomas: any
-  // public listActors: any
-  // public listProductoras: any
+  clasificaciones :any
+  categorias:any
   error = false
   actualizar = false
-  constructor(private peticion: PeliculasService, 
-    // private actsPet: ActoresService,
-    // private idioPet: IdiomasService,
-    // private prodPet: ProductorasService,
+  constructor(private peticion: PeliculasService,
     private router: Router,
+    private categoriasPet: CategoriasService, private clasifPet: ClasificacionesService,
     private activatedRouter: ActivatedRoute) {
-
+      this.clasifPet.getAll().subscribe(respuesta =>{this.clasificaciones = respuesta.clasificaciones!});
+      this.categoriasPet.getAll().subscribe(respuesta =>{this.categorias = respuesta.categorias!});
     this.activatedRouter.params.subscribe(
       params=>{
         this.getpeli(params['id'])
@@ -104,9 +98,6 @@ export class PeliculaDetalleComponent implements OnInit {
         this.Peli = respuesta.pelicula!
         this.Cat = respuesta.pelicula!.categoria!
         this.Cla = respuesta.pelicula!.clasificacion!
-        // this.pap = respuesta.pelicula!.papeles!
-        // this.idiomas = respuesta.pelicula!.idioma!
-        // this.productoras = respuesta.pelicula!.productora!
         console.log(respuesta.pelicula!)
       })
   }
@@ -125,29 +116,7 @@ export class PeliculaDetalleComponent implements OnInit {
     inputs(){
       this.actualizar = !this.actualizar
       
-    // this.actsPet.getAll().subscribe(respuesta=>{this.listActors = respuesta.actores});
-    // this.idioPet.getAll().subscribe(respuesta=>{this.listIdiomas = respuesta.idiomas});
-    // this.prodPet.getAll().subscribe(respuesta=>{this.listProductoras= respuesta.productoras});
     }
   ngOnInit(): void {
   }
-  agregarIdioma(){
-
-  }
-  agregarActor(){
-    
-  }
-  agregarProductora(){
-    
-  }
-  eliminarIdioma(){
-
-  }
-  eliminarActor(){
-    
-  }
-  eliminarProductora(){
-    
-  }
-
 }

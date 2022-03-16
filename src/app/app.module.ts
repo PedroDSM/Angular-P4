@@ -31,6 +31,7 @@ import { CategoriaDetalleComponent } from './componentes/D/categoria-detalle/cat
 import { ProductoraDetalleComponent } from './componentes/D/productora-detalle/productora-detalle.component';
 import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detalle.component';
 import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
+import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelic
     CategoriaDetalleComponent,
     ProductoraDetalleComponent,
     ActorDetalleComponent,
-    PeliculaDetalleComponent
+    PeliculaDetalleComponent,
+    DesactivarCuentaComponent,
   ],
   imports: [
     BrowserModule,

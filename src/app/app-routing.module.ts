@@ -25,6 +25,7 @@ import { ProductoraDetalleComponent } from './componentes/D/productora-detalle/p
 import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detalle.component';
 import { TokenGuard } from './guards/token.guard';
 import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
+import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'status_cuenta', component: DesactivarCuentaComponent},
   { path: 'FCA', component: CategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'FA', component: FormularioActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'FC', component: FormularioClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },

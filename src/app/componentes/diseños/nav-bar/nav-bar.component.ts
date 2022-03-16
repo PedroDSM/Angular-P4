@@ -14,7 +14,6 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
  logout(){
-
   this.peticion.logout().subscribe(
     respuesta =>{
         this.router.navigateByUrl('/login');
@@ -23,6 +22,5 @@ export class NavBarComponent implements OnInit {
     error=>{
       alert(error.error.error)
     })
-
  }
 }

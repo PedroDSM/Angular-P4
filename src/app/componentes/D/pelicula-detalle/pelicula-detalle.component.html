@@ -18,18 +18,6 @@
                   <p class="card-text"align="left">Rate: {{Peli.calificacion}}</p>
                   <p class="card-text"align="left">Clasification: {{Cla.nombre!}}</p>
                   <p class="card-text"align="left">Category: {{Cat.nombre}}</p>
-                  <!-- <h3 align="left">Personajes</h3>
-                  <div *ngFor="let p of pap" >
-                    <p align="left">{{p.papel}}: Interpretado por {{p.actor!.persona!.nombre}}</p>
-                  </div>
-                  <h3 align="left">Idiomas</h3>
-                  <div *ngFor="let i of idiomas" >
-                    <p align="left">{{i.nombre}}</p>
-                  </div>
-                  <h3 align="left">Productoras</h3>
-                  <div *ngFor="let prod of productoras" >
-                    <p align="left">{{prod.nombre}}</p>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -56,15 +44,27 @@
                 <label for="inpRate" class="form-label">Rate</label>
                 <input type="text" [(ngModel)]="Peli.calificacion" class=" bg-dark text-white form-control" id="inpRate" name="inpRate">
               </div>
-              <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpClasification" class="form-label">Clasification</label>
-                <input type="text" [(ngModel)]="Cla.nombre" class=" bg-dark text-white form-control" id="inpClasification" name="inpClasification">
+              <div class="form-outline mb-4">
+                <label>Clasificacion De Pelicula</label>
+                <select [(ngModel)] ="Peli.clasificacion_id"  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion" #clasificacion="ngModel" required [ngClass]="{'is-valid': !clasificacion.invalid, 'is-invalid': clasificacion.invalid}" placeholder="Clasificacion">
+                  <option *ngFor="let clas of clasificaciones" [value]="clas.id" selected>{{clas.nombre}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad Minima: {{clas.edad_minima}}  </option>
+                </select>
+                <div class="invalid-feedback" *ngIf="clasificacion.invalid && (clasificacion.dirty || clasificacion.touched)">
+                  <div *ngIf="clasificacion.errors?.['required']">
+                    Introduzca una Clasificacion a la Pelicula
+                </div>
               </div>
-              <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpCategory" class="form-label">Category</label>
-                <input type="text" [(ngModel)]="Cat.nombre" class=" bg-dark text-white form-control" id="inpCategory" name="inpCategory">
+    
+              <div class="form-outline mb-4">
+                <label>Categoria De Pelicula</label>
+                <select  [(ngModel)] = "Peli.categoria_id" class="form-select bg-dark text-white form-control form-control-lg" id="Categoria" #categoria="ngModel" required [ngClass]="{'is-valid': !categoria.invalid, 'is-invalid': categoria.invalid}" placeholder="Categoria">
+                  <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
+                  <div *ngIf="categoria.errors?.['required']">
+                    Introduzca una Categoria a la Pelicula
+                </div>
               </div>
-              
 
               <br>
               <div class="d-grid gap-2">
@@ -73,9 +73,9 @@
               </div>
             </div>
             <br>
-            <a routerLink="/LP" class="btn btn-dark" >Volver</a>
           </div>
         </div>
+        <a routerLink="/LP" class="btn btn-dark" >Volver</a>
       </div>
     </div>
   

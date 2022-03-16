@@ -45,4 +45,7 @@ export class PeticionesService {
     this.cookieService.deleteAll();
    return this.http.get<Respuesta>(environment.urlbase+'/logout', {headers:header})
   }
+  actdes(email:any){
+   return this.http.post<Respuesta>(environment.urlbase+'/status', email)
+  }
 }

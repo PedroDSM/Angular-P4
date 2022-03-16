@@ -1,0 +1,12 @@
+
+            <label for="inpEmail" class="form-label text-white">Email address</label>
+            <input type="email" [(ngModel)]="email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]{4,60}+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.errors?.['required']">
+                Introduzca un correo electrónico válido por favor {{ email.value }}
+              </div>
+              <div *ngIf="email.errors && email.errors?.['pattern']">
+                El correo electrónico no sigue el formato correcto. Sigue este ejemplo: pedro@gmail.com
+                {{ email.value }}
+              </div>
