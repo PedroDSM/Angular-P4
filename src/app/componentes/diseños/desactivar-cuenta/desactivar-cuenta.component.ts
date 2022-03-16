@@ -10,19 +10,9 @@ import { PeticionesService } from 'src/app/peticiones/usuarios.service';
 export class DesactivarCuentaComponent implements OnInit {
 
   constructor(private peticion: PeticionesService, private router: Router) { }
-email:any
+
+
   ngOnInit(): void {
   }
 
-  desactivarCuenta(){
-    this.peticion.actdes(this.email).subscribe(
-      respuesta =>{
-          this.router.navigateByUrl('/login');
-          alert(respuesta.mensaje)
-      },
-      error=>{
-        alert(error.error.error)
-      })
-  
-   }
 }

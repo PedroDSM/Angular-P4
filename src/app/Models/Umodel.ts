@@ -13,6 +13,7 @@ export interface User {
   nombre?: string;
   username?: string;
   password?: string;
+  rol? : string;
   password_confirmation?: string;
   email?:string;
   f_nacimiento?: string|Date|number;

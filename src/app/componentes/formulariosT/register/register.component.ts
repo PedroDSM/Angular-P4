@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
     username: "",
     email: "",
     password: "",
+    rol: "USER",
     password_confirmation: "",
     f_nacimiento: "",
     nacionalidad: "",
@@ -60,6 +61,7 @@ export class RegisterComponent implements OnInit {
     this.peticion.create(this.user).subscribe(
       respuesta =>{
           this.router.navigateByUrl('/LU');
+          this.router.navigate(['/login']);
           alert(respuesta.mensaje)
       },
       error=>{
