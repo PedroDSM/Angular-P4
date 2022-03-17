@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card">
-            <div class="card-header">
-              <h2>Name: {{Peli.nombre}}</h2>
-            </div>
-          <div  *ngIf="!actualizar"  class="card-body">
-            
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h2>Name: {{Peli.nombre}}</h2>
+        </div>
+        <div class="card-body">
+          <div *ngIf="!actualizar">
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="../../../../assets/imagen.png" class="img-fluid rounded-start" alt="...">
@@ -21,71 +21,68 @@
                 </div>
               </div>
             </div>
-              <div class="d-grid gap-2">
-
-                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
-              </div>
+            <div class="d-grid gap-2">
+              <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
             </div>
-            <div class="card-body" *ngIf="actualizar">
-  
-              <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpName" class="form-label">Name</label>
-                <input type="text" [(ngModel)]="Peli.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
-              </div>
-              <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpDescription" class="form-label">Description</label>
-                <input type="text" [(ngModel)]="Peli.descripcion" class=" bg-dark text-white form-control" id="inpDescription" name="inpDescription">
-              </div>
-              <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpDuration" class="form-label">Duration</label>
-                <input type="text" [(ngModel)]="Peli.duracion" class=" bg-dark text-white form-control" id="inpDuration" name="inpDuration">
-              </div>
-              <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpRate" class="form-label">Rate</label>
-                <input type="text" [(ngModel)]="Peli.calificacion" class=" bg-dark text-white form-control" id="inpRate" name="inpRate">
-              </div>
-              <div class="form-outline mb-4">
-                <label>Clasificacion De Pelicula</label>
-                <select [(ngModel)] ="Peli.clasificacion_id"  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion" #clasificacion="ngModel" required [ngClass]="{'is-valid': !clasificacion.invalid, 'is-invalid': clasificacion.invalid}" placeholder="Clasificacion">
-                  <option *ngFor="let clas of clasificaciones" [value]="clas.id" selected>{{clas.nombre}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad Minima: {{clas.edad_minima}}  </option>
-                </select>
-                <div class="invalid-feedback" *ngIf="clasificacion.invalid && (clasificacion.dirty || clasificacion.touched)">
-                  <div *ngIf="clasificacion.errors?.['required']">
-                    Introduzca una Clasificacion a la Pelicula
-                </div>
-              </div>
-    
-              <div class="form-outline mb-4">
-                <label>Categoria De Pelicula</label>
-                <select  [(ngModel)] = "Peli.categoria_id" class="form-select bg-dark text-white form-control form-control-lg" id="Categoria" #categoria="ngModel" required [ngClass]="{'is-valid': !categoria.invalid, 'is-invalid': categoria.invalid}" placeholder="Categoria">
-                  <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
-                </select>
-                <div class="invalid-feedback" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
-                  <div *ngIf="categoria.errors?.['required']">
+          </div>
+          <div *ngIf="actualizar">
+            <div @IzquierdaDerecha  class="mb-3">
+              <label for="inpName" class="form-label">Name</label>
+              <input type="text" [(ngModel)]="Peli.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
+            </div>
+            <div @IzquierdaDerecha  class="mb-3">
+              <label for="inpDescription" class="form-label">Description</label>
+              <input type="text" [(ngModel)]="Peli.descripcion" class=" bg-dark text-white form-control" id="inpDescription" name="inpDescription">
+            </div>
+            <div @IzquierdaDerecha  class="mb-3">
+              <label for="inpDuration" class="form-label">Duration</label>
+              <input type="text" [(ngModel)]="Peli.duracion" class=" bg-dark text-white form-control" id="inpDuration" name="inpDuration">
+            </div>
+            <div @IzquierdaDerecha  class="mb-3">
+              <label for="inpRate" class="form-label">Rate</label>
+              <input type="text" [(ngModel)]="Peli.calificacion" class=" bg-dark text-white form-control" id="inpRate" name="inpRate">
+            </div>
+            <div @IzquierdaDerecha class="form-outline mb-4">
+              <label>Categoria De Pelicula</label>
+              <select  [(ngModel)] = "Peli.categoria_id" class="form-select bg-dark text-white form-control form-control-lg" id="Categoria" #categoria="ngModel" required [ngClass]="{'is-valid': !categoria.invalid, 'is-invalid': categoria.invalid}" placeholder="Categoria">
+              <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
+                <div *ngIf="categoria.errors?.['required']">
                     Introduzca una Categoria a la Pelicula
                 </div>
               </div>
-
-              <br>
-              <div class="d-grid gap-2">
-                <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
-                <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+            </div>
+            <div @IzquierdaDerecha class="form-outline mb-4">
+              <label>Clasificacion De Pelicula</label>
+              <select [(ngModel)] ="Peli.clasificacion_id"  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion" #clasificacion="ngModel" required [ngClass]="{'is-valid': !clasificacion.invalid, 'is-invalid': clasificacion.invalid}" placeholder="Clasificacion">
+              <option *ngFor="let clas of clasificaciones" [value]="clas.id" selected>{{clas.nombre}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad Minima: {{clas.edad_minima}}  </option>
+              </select>
+              <div class="invalid-feedback" *ngIf="clasificacion.invalid && (clasificacion.dirty || clasificacion.touched)">
+                <div *ngIf="clasificacion.errors?.['required']">
+                    Introduzca una Clasificacion a la Pelicula
+                </div>
               </div>
             </div>
-            <br>
+            <div class="d-grid gap-2">
+              <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
+              <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+            </div>
+
           </div>
-        </div>
-        <a routerLink="/LP" class="btn btn-dark" >Volver</a>
-      </div>
-    </div>
-  
-  <div *ngIf="error" class="container card"  >
-    <div class="row card-body align-items-center">
-      <div class="col align-self-center">
-        <div class="alert alert-danger">
-          HA HABIDO UN PROBLEMA PROCESANDO LA SOLICITUD, VUELVA A INTENTARLO
+          <a routerLink="/LP" class="btn btn-dark" >Volver</a>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<div *ngIf="error" class="container card"  >
+  <div class="row card-body align-items-center">
+    <div class="col align-self-center">
+      <div class="alert alert-danger">
+        HA HABIDO UN PROBLEMA PROCESANDO LA SOLICITUD, VUELVA A INTENTARLO
+      </div>
+    </div>
+  </div>
+</div>

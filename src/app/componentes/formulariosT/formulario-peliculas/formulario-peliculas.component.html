@@ -12,7 +12,7 @@
           </div>
           <div class="form-outline mb-4">
             <label>Descripcion De Pelicula</label>
-            <input [(ngModel)] = "pelicula_nueva.descripcion" type="text" id="Descripcion" class="bg-dark text-white form-control form-control-lg" #descripcion="ngModel" required [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}" placeholder="Descripcion"/>
+            <textarea [(ngModel)] = "pelicula_nueva.descripcion" rows="4" id="Descripcion" class="bg-dark text-white form-control form-control-lg" #descripcion="ngModel" required [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}" placeholder="Descripcion"></textarea>
             <div class="invalid-feedback" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
               <div *ngIf="descripcion.errors?.['required']">
                 Introduzca una Descripcion de Pelicula

@@ -31,10 +31,11 @@ import {
 export class ListaProductorasComponent implements OnInit {
   public productoras: any = []
   error = false
-  constructor(private peticion: ProductorasService, private router: Router) { }
+  constructor(private peticion: ProductorasService, private router: Router) {
+    this.leeerLista()
+  }
 
   ngOnInit(): void {
-    this.leeerLista()
   }
   leeerLista(){
     this.peticion.getAll().subscribe(

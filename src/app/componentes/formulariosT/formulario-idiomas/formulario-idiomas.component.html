@@ -3,16 +3,9 @@
     <div class="col align-self-center">
       <form #forma="ngForm">
           <label for="inpName" class="form-label text-white">Nombre</label>
-          <input type="text" [(ngModel)]="idi.nombre" name="name" minlength="5" class=" bg-dark text-white form-control"  id="inpName" #nombre="ngModel" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" placeholder="Name"/>
-          <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-            <div *ngIf="nombre.errors?.['minlength']">
-                Introduzca un Nombre con 5 Caracteres Minimo
-            </div>
-            <div *ngIf="nombre.errors?.['required']">
-                Introduzca un Nombre Valido
-            </div>
-        </div> 
-        <button  (click)="send()"  [disabled]="!forma.valid"  type="submit" class="btn btn-success">Submit</button>
+          <input type="text" [(ngModel)]="idi.nombre" name="name" minlength="5" class=" bg-dark text-white form-control"  id="inpName" placeholder="Name"/>
+
+        <button  (click)="send()"  type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>
   </div>

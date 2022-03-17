@@ -12,7 +12,7 @@
                 <p class="card-text">Name: {{productora.nombre}}</p>
                 <p class="card-text">President: {{productora.presidente}}</p>
                 <p class="card-text">Propietary: {{productora.propietario}}</p>
-                <p class="card-text">Website: {{productora.sitio_web}}</p>
+                <a class="card-text" href="https://{{productora.sitio_web}}">Website: {{productora.sitio_web}}</a>
                 <p class="card-text"><a (click)="leer(productora.id)" class="btn btn-info" >Detalles</a></p>
               </div>
             </div>
