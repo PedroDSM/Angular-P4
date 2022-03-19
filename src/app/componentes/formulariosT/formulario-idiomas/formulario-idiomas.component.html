@@ -3,8 +3,12 @@
     <div class="col align-self-center">
       <form #forma="ngForm">
           <label for="inpName" class="form-label text-white">Nombre</label>
-          <input type="text" [(ngModel)]="idi.nombre" name="name" minlength="5" class=" bg-dark text-white form-control"  id="inpName" placeholder="Name"/>
-
+          <input type="text" [(ngModel)]="idi.nombre" name="name" class=" bg-dark text-white form-control"  id="inpName" #nombre="ngModel" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" placeholder="Name"/>
+          <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors?.['required']">
+              Introduzca un Idioma
+          </div>
+        </div>
         <button  (click)="send()"  type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>

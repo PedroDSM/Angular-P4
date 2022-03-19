@@ -68,10 +68,28 @@
               <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
               <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
             </div>
-
           </div>
           <a routerLink="/LP" class="btn btn-dark" >Volver</a>
         </div>
+        <div class="card-footer bg-transparent border-success">
+          <h2 class="justify-center">Comentarios</h2>
+          <div class="container">
+            <div class="card">
+              <div class="card-body text-dark">
+                <form #forma="ngForm">
+                <input type="text" ngModel name="comentario" required [ngClass]="{'is-valid': !comentario.invalid, 'is-invalid': comentario.invalid}"  #comentario="ngModel" class=" bg-white text-dark form-control" id="comentario" name="comentario" placeholder="Añada un Comentario">
+                <div class="invalid-feedback" *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)">
+              <div *ngIf="comentario.errors?.['required']">
+                Añada un Comentario Sobre la Pelicula {{Peli.nombre}}.
+              </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button  [disabled]="!forma.valid"  type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </div>
   </div>
@@ -86,3 +104,4 @@
     </div>
   </div>
 </div>
+
