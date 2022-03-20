@@ -7,7 +7,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { Pelicula, Categoria, Clasificacion, Papeles, Idioma, Productora } from 'src/app/Models/Pemodel'
+import { Pelicula, Categoria, Clasificacion, Papeles, Idioma, Productora, Comentario } from 'src/app/Models/Pemodel'
 import { PeliculasService } from 'src/app/peticiones/peliculas.service';
 import { ActoresService } from 'src/app/peticiones/actores.service';
 import { IdiomasService } from 'src/app/peticiones/idiomas.service';
@@ -76,10 +76,14 @@ export class PeliculaDetalleComponent implements OnInit {
   public Peli: Pelicula = {}
   public Cat:Categoria ={}
   public Cla:Clasificacion = {}
+  public coments: any
   clasificaciones :any
   categorias:any
   error = false
   actualizar = false
+
+  coment : Comentario ={}
+
   constructor(private peticion: PeliculasService,
     private router: Router,
     private categoriasPet: CategoriasService, private clasifPet: ClasificacionesService,
@@ -98,9 +102,11 @@ export class PeliculaDetalleComponent implements OnInit {
         this.Peli = respuesta.pelicula!
         this.Cat = respuesta.pelicula!.categoria!
         this.Cla = respuesta.pelicula!.clasificacion!
+        this.coments= respuesta.comentarios!.comentarios!
         console.log(respuesta.pelicula!)
       })
   }
+
   modificar(){
     this.peticion.update(this.id,this.Peli).subscribe(
       respuesta=>{
@@ -112,11 +118,24 @@ export class PeliculaDetalleComponent implements OnInit {
         this.error = true
         alert("Ha habido un error al procesar la solicitud")
       })
-    }
-    inputs(){
-      this.actualizar = !this.actualizar
-      
-    }
+  }
+  inputs(){
+    this.actualizar = !this.actualizar
+    
+  }
+  
+  comentar(){
+    this.peticion.Comentar(this.coment ,this.id ).subscribe(
+      respuesta=>{
+        this.getpeli(this.id)
+      },
+      error=>{
+        this.error = true
+        console.log(error)
+        alert("Ha habido un error al comentar")
+      })
+  }
+
   ngOnInit(): void {
   }
 }

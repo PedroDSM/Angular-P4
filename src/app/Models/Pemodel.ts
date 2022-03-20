@@ -1,8 +1,29 @@
 export interface Respuesta {
   peliculas?: Pelicula[];
   pelicula?: Pelicula;
+  comentarios?: Comentarios;
   mensaje?:  string;
 }
+
+export interface Comentarios {
+  _id:         number;
+  comentarios: Comentario[];
+  __v:         number;
+}
+
+export interface Comentario {
+  usuario?:    Usuario;
+  comentario?: string;
+  _id?:        string;
+}
+
+export interface Usuario {
+  id:           number;
+  nombre:       string;
+  f_nacimiento: Date;
+  nacionalidad: string;
+}
+
 
 export interface Pelicula {
   id?:            number;

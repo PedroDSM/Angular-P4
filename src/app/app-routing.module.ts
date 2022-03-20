@@ -26,6 +26,7 @@ import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detal
 import { TokenGuard } from './guards/token.guard';
 import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
 import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
+import { ListaUsuariosComponent } from './componentes/listasT/lista-usuarios/lista-usuarios.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LP/:id/DPE', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
+  { path: 'LU', component: ListaUsuariosComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
 ];
 
 @NgModule({
