@@ -119,4 +119,16 @@ export class PeliculaDetalleComponent implements OnInit {
     }
   ngOnInit(): void {
   }
+  url = "../../../../assets/imagen.png" 
+  imageselected(e:any){
+    if(e.target.files){
+      var mostrar = new FileReader();
+      mostrar.readAsDataURL(e.target.files[0]);
+      mostrar.onload = (event:any)=>{
+        this.url = event.target.result;
+
+      }
+    }
+
+  }
 }
