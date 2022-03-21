@@ -12,19 +12,14 @@ export class RolGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const isAuthorized =  this.PeticionesService.usuarios.includes(route.data['expectedRoles']);
 
+    console.log(this.PeticionesService.CurrentUser.rol)
+    const isAuthorized =  route.data['expectedRoles'].includes(this.PeticionesService.CurrentUser.rol);
+    console.log(isAuthorized)
     if(!isAuthorized){
       this.router.navigateByUrl('/error');
     }
     return isAuthorized
   }
-  
-//   private isAuthorized(route: ActivatedRouteSnapshot){
-//     const roles = ['Admin'];
-//     const expectedRoles = route.data['expectedRoles'];
-//     const roleMatches = roles.findIndex(role => expectedRoles.indexOf(role) !== -1);
-//     return roleMatches < 0 ? false : true;
-//  }
 }
 

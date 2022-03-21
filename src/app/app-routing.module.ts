@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard, RolGuardGuard], canDeactivate:[TokenGuard], 
       data:  {
-        expectedRoles: ['User']
+        expectedRoles: ['ADMIN']
       }
     },
   { path: 'LU/:id/DE', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },

@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class PeticionesService {
-  public usuarios: any = []
+  public CurrentUser: User ={}
   token = 'x'
   constructor(private http: HttpClient, private cookieService:CookieService) {
     console.log('Servicio funcionando');

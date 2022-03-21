@@ -55,6 +55,8 @@ export class LoginComponent implements OnInit {
           this.cookieService.set('token',respuesta.token!.token!,4,'/')
           this.router.navigate(['/inicio']);
           alert(respuesta.mensaje)
+          this.peticion.CurrentUser = respuesta.usuario!
+          console.log(this.peticion.CurrentUser)
       },
       error=>{
         alert(error.error.error)
