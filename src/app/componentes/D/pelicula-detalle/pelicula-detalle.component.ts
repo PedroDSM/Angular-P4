@@ -103,7 +103,6 @@ export class PeliculaDetalleComponent implements OnInit {
         this.Cat = respuesta.pelicula!.categoria!
         this.Cla = respuesta.pelicula!.clasificacion!
         this.coments= respuesta.comentarios!.comentarios!
-        console.log(respuesta.pelicula!)
       })
   }
 
@@ -128,6 +127,8 @@ export class PeliculaDetalleComponent implements OnInit {
     this.peticion.Comentar(this.coment ,this.id ).subscribe(
       respuesta=>{
         this.getpeli(this.id)
+        alert('Comentario creado correctamente')
+        this.coment.comentario = ''
       },
       error=>{
         this.error = true
