@@ -27,35 +27,40 @@ import { TokenGuard } from './guards/token.guard';
 import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
 import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
 import { ListaUsuariosComponent } from './componentes/listasT/lista-usuarios/lista-usuarios.component';
+import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-protegidas.component';
 
 
 const routes: Routes = [
-  { path:'',redirectTo:'/login',pathMatch:'full'},
-  { path: 'inicio', component: InicioComponent},
+  // { path:'',redirectTo:'/login',pathMatch:'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'status_cuenta', component: DesactivarCuentaComponent},
-  { path: 'FCA', component: CategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'FA', component: FormularioActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'FC', component: FormularioClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'FI', component: FormularioIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'FP', component: FormularioPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'FPR', component: FormularioProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LA', component: ListaActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LC', component: ListaClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LD', component: ListaDirectoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LP', component: ListaPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LPR', component: ListaProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LU/:id/DE', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LI/:id/DI', component: IdiomasDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LC/:id/DC', component: ClasificacionDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LP/:id/DPE', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
-  { path: 'LU', component: ListaUsuariosComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
+  { path: '', component: RutasProtegidasComponent, canActivate:[TokenGuard],
+    children:[
+      { path: 'inicio', component: InicioComponent},
+      { path: 'FCA', component: CategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'FA', component: FormularioActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'FC', component: FormularioClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'FI', component: FormularioIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'FP', component: FormularioPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'FPR', component: FormularioProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LA', component: ListaActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LC', component: ListaClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LD', component: ListaDirectoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LP', component: ListaPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LPR', component: ListaProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LU/:id/DE', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LI/:id/DI', component: IdiomasDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LC/:id/DC', component: ClasificacionDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LP/:id/DPE', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+      { path: 'LU', component: ListaUsuariosComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
+
+    ]},
 ];
 
 @NgModule({

@@ -1,7 +1,10 @@
+<br><br><br>
+<br><br>
 
-<div @Aparecer class="card text-white bg-dark mb-3" style="max-width: 18rem; border-radius: 2rem;">
+<div @Aparecer class="align-middle card text-white bg-dark mb-3" style="max-width: 18rem; border-radius: 2rem;">
   <div class="card-header">
-      <h3>Sign In</h3></div>
+      <h3>Sign In</h3>
+    </div>
       <div class="card-body text-secondary">
         <label for="inpEmail" class="form-label text-white">Email address</label>
         <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
@@ -27,7 +30,7 @@
         </div>
 <br>
         <button (click)="send()"class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-        <p class="text-center"><a routerLink="/register" class="btn text-white">You dont have an account?</a></p>
+        <a class="text-center btn link-primary"routerLink="/register">You dont have an account?</a>
   </div>
 </div>
-
+<br><br><br><br><br>

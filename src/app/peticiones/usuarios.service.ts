@@ -42,8 +42,6 @@ export class PeticionesService {
   }
 
   logout(){
-    this.cookieService.delete("token");
-    this.cookieService.deleteAll();
    return this.http.get<Respuesta>(environment.urlbase+'/logout', {headers:this.header})
   }
   actdes(email:any){
