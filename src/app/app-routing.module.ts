@@ -26,6 +26,8 @@ import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detal
 import { TokenGuard } from './guards/token.guard';
 import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
 import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
+import { RolGuardGuard } from './guards/Roles/rol-guard.guard';
+import { ErrorComponent } from './componentes/diseños/error/error.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,11 @@ const routes: Routes = [
   { path: 'LP', component: ListaPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LPR', component: ListaProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-  { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+  { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard, RolGuardGuard], canDeactivate:[TokenGuard], 
+      data:  {
+        expectedRoles: ['User']
+      }
+    },
   { path: 'LU/:id/DE', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LI/:id/DI', component: IdiomasDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LC/:id/DC', component: ClasificacionDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
@@ -54,6 +60,7 @@ const routes: Routes = [
   { path: 'LPR/:id/DPR', component: ProductoraDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LA/:id/DA', component: ActorDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
   { path: 'LP/:id/DPE', component: PeliculaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]   },
+  { path: 'error', component: ErrorComponent }
 ];
 
 @NgModule({
