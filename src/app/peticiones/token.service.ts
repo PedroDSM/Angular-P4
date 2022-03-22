@@ -18,10 +18,10 @@ export class TokenService {
 
   validar(){
     this.token = this.cookieService.get('token')
-    let header = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
-    })
+    let 
+    header = new HttpHeaders().
+    append('Content-Type', 'application/json').
+    append('Authorization', `Bearer ${this.token}`)
     return this.http.get(this.urlBase, {headers:header})
   }
 

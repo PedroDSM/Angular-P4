@@ -3,6 +3,7 @@ import { Item } from "src/app/Models/NavItems";
 export const LinksNavMenu:Item[] = [
     {
         title:'Formularios',
+        permiso: ['ADMIN'],
         links:[
             {
                 name:'Formularios Productoras',
@@ -32,6 +33,7 @@ export const LinksNavMenu:Item[] = [
     },
     {
         title:'Listas',
+        permiso: ['ADMIN', 'USER'],
         links:[
             {
                 name:'Lista Productoras',

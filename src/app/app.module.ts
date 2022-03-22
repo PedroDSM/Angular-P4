@@ -33,6 +33,7 @@ import { ActorDetalleComponent } from './componentes/D/actor-detalle/actor-detal
 import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelicula-detalle.component';
 import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
 import { ErrorComponent } from './componentes/diseños/error/error.component';
+import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-protegidas.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { ErrorComponent } from './componentes/diseños/error/error.component';
     PeliculaDetalleComponent,
     DesactivarCuentaComponent,
     ErrorComponent,
+    RutasProtegidasComponent,
   ],
   imports: [
     BrowserModule,

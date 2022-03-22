@@ -14,10 +14,9 @@ export class IdiomasService {
   }
     token = this.cookieService.get('token')
 
-  header = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${this.token}`
-  })
+    header = new HttpHeaders().
+    append('Content-Type', 'application/json').
+    append('Authorization', `Bearer ${this.token}`)
   urlBase = environment.urlbase+'/idiomas'
   getAll(){
     return this.http.get<Respuesta>(this.urlBase, {headers:this.header})

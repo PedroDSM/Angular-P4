@@ -16,6 +16,12 @@ export class PeticionesService {
   urlusers = environment.urlbase+'/usuarios'
   logi = environment.urlbase+'/login'
   logo = environment.urlbase+'/logout'
+
+  
+  header = new HttpHeaders().
+  append('Content-Type', 'application/json').
+  append('Authorization', `Bearer ${this.token}`)
+  
   getAll(){
     return this.http.get<Respuesta>(this.urlusers)
   }
@@ -40,7 +46,7 @@ export class PeticionesService {
     this.token = this.cookieService.get('token')
     const header = new HttpHeaders()
     .set( 'Content-Type','application/json')
-    .set('Authorization', 'Bearer '+this.token)
+    .set('Authorization', `Bearer ${this.token}`)
     this.cookieService.delete("token");
     this.cookieService.deleteAll();
    return this.http.get<Respuesta>(environment.urlbase+'/logout', {headers:header})

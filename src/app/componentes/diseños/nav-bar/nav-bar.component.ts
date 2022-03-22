@@ -18,8 +18,8 @@ export class NavBarComponent implements OnInit {
  logout(){
   this.peticion.logout().subscribe(
     respuesta =>{
-        this.router.navigateByUrl('/login');
         alert(respuesta.mensaje)
+        this.router.navigateByUrl('/login');
     },
     error=>{
       alert(error.error.error)

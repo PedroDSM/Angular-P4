@@ -14,10 +14,9 @@ export class ActoresService {
   }
   token = this.cookieService.get('token')
   urlBase = environment.urlbase+'/actores'
-  header = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${this.token}`
-  })
+  header = new HttpHeaders().
+  append('Content-Type', 'application/json').
+  append('Authorization', `Bearer ${this.token}`)
 
   getAll(){
     return this.http.get<Respuesta>(this.urlBase, {headers:this.header})
