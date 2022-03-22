@@ -34,6 +34,7 @@ import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cue
 import { ErrorComponent } from './componentes/diseños/error/error.component';
 import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-protegidas.component';
 import { RolDirective } from './directivas/rol.directive';
+import { ListaUsuariosComponent } from './componentes/listasT/lista-usuarios/lista-usuarios.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { RolDirective } from './directivas/rol.directive';
     ErrorComponent,
     RutasProtegidasComponent,
     RolDirective,
+    ListaUsuariosComponent,
   ],
   imports: [
     BrowserModule,

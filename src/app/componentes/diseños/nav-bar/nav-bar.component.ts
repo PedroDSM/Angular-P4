@@ -13,6 +13,8 @@ import { LinksNavMenu } from './links-nav-menu.const';
 export class NavBarComponent implements OnInit {
   menu =   LinksNavMenu
   formularios: any
+  nombre: any
+  id: any
   constructor(private peticion: PeticionesService,private t: TokenService, private router: Router) { }
   ngOnInit(): void {
     this.validarBoton()
@@ -30,6 +32,11 @@ export class NavBarComponent implements OnInit {
  validarBoton(){
   this.t.validar().subscribe(respuesta=>{
     this.formularios = respuesta.rol
+    this.nombre = respuesta.username
+    this.id = respuesta.id
   })
+ }
+ perfil(){
+  this.router.navigateByUrl('perfil');
  }
 }

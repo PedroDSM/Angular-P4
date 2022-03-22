@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 align-self-center table-responsive">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let user of users">
+            <div @Aparecer class="card">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+              <div class="card-body">
+                <p class="card-text">Id: {{user.id}}</p>
+                <p class="card-text">Name: {{user.nombre}}</p>
+                <p class="card-text">Username: {{user.cuenta.usermame}}</p>
+                <p class="card-text">Email: {{user.cuenta.email}}</p>
+                <p class="card-text">Rol: {{user.cuenta.rol}}</p>
+                <p class="card-text">BirthDay: {{user.f_nacimiento}}</p>
+                <p class="card-text">Nacionality: {{user.nacionalidad}}</p>
+                <p class="card-text"><a (click)="cambiarEstado(user.cuenta.id)" class="btn btn-info" >Cambiar estatus</a></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

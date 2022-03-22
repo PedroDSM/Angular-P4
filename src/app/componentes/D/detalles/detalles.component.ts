@@ -78,12 +78,10 @@ export class DetallesComponent implements OnInit {
   error = false
   actualizar = false
   constructor(private peticion: PeticionesService,private t: TokenService, private router: Router,private activatedRouter: ActivatedRoute) {
-    this.activatedRouter.params.subscribe(
-      params=>{
-        this.getusuario(params['id'])
-      }
-    )
-
+    
+    this.t.validar().subscribe(respuesta=>{
+      this.getusuario(respuesta.id!)
+    })
   }
 
   getusuario(id: any){

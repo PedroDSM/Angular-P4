@@ -28,6 +28,7 @@ import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cue
 import { RolGuardGuard } from './guards/Roles/rol-guard.guard';
 import { ErrorComponent } from './componentes/diseños/error/error.component';
 import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-protegidas.component';
+import { ListaUsuariosComponent } from './componentes/listasT/lista-usuarios/lista-usuarios.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,8 @@ const routes: Routes = [
       { path: 'LPR', component: ListaProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LI', component: ListaIdiomasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-      { path: 'LU/:id/DE', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
+      { path: 'LU', component: ListaUsuariosComponent, canActivate:[TokenGuard,RolGuardGuard], canDeactivate:[TokenGuard] , data:  {expectedRoles: ['ADMIN']}},
+      { path: 'perfil', component: DetallesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LI/:id/DI', component: IdiomasDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LC/:id/DC', component: ClasificacionDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LCA/:id/DCA', component: CategoriaDetalleComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },

@@ -9,7 +9,6 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class PeticionesService {
   public CurrentUser: User ={}
-  token = 'x'
   constructor(private http: HttpClient, private cookieService:CookieService) {
     console.log('Servicio funcionando');
   }
@@ -18,24 +17,25 @@ export class PeticionesService {
   logo = environment.urlbase+'/logout'
 
   
+  token = this.cookieService.get('token')
   header = new HttpHeaders().
   append('Content-Type', 'application/json').
   append('Authorization', `Bearer ${this.token}`)
   
   getAll(){
-    return this.http.get<Respuesta>(this.urlusers)
+    return this.http.get<Respuesta>(this.urlusers, {headers:this.header})
   }
   getOne(indice:any){
-    return this.http.get<Respuesta>(this.urlusers+'/'+indice)
+    return this.http.get<Respuesta>(this.urlusers+'/'+indice, {headers:this.header})
   }
   create(info:User){
-    return this.http.post<Respuesta>(this.urlusers,info)
+    return this.http.post<Respuesta>(this.urlusers,info, {headers:this.header})
   }
   delete(indice:any){
-    return this.http.delete<Respuesta>(this.urlusers+'/'+indice)
+    return this.http.delete<Respuesta>(this.urlusers+'/'+indice, {headers:this.header})
   }
   update(indice:any, info: User){
-    return this.http.put<Respuesta>(this.urlusers+'/'+indice, info)
+    return this.http.put<Respuesta>(this.urlusers+'/'+indice, info, {headers:this.header})
   }
 
   login(info: User){
@@ -51,7 +51,7 @@ export class PeticionesService {
     this.cookieService.deleteAll();
    return this.http.get<Respuesta>(environment.urlbase+'/logout', {headers:header})
   }
-  actdes(email:any){
-   return this.http.post<Respuesta>(environment.urlbase+'/status', email)
+  cambiarRol(id:any){
+   return this.http.get<Respuesta>(this.urlusers+'/'+id+'/cambiar_rol', {headers:this.header})
   }
 }
