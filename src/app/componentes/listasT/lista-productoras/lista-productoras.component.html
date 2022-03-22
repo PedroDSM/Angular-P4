@@ -5,7 +5,7 @@
           <div class="col" *ngFor="let productora of productoras">
             <div @Aparecer class="card">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(productora.id)"></button>
+              <button type="button" class="btn-close" aria-label="Close" *ngIf="formularios == 'ADMIN'" (click)="eliminar(productora.id)"></button>
             </div>
               <div class="card-body">
                 <p class="card-text">Id: {{productora.id}}</p>

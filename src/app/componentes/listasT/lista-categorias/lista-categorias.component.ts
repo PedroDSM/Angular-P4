@@ -8,6 +8,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { TokenService } from 'src/app/peticiones/token.service';
 
 @Component({
   selector: 'app-lista-categorias',
@@ -31,11 +32,12 @@ import {
 export class ListaCategoriasComponent implements OnInit {
   public categorias: any = []
   error = false
-  constructor(private peticion: CategoriasService, private router: Router) { }
+  constructor(private peticion: CategoriasService,private t: TokenService, private router: Router) { }
 
 
   ngOnInit(): void {
     this.leeerLista()
+    this.validarBoton()
   }
   leeerLista(){
     this.peticion.getAll().subscribe(
@@ -58,4 +60,11 @@ export class ListaCategoriasComponent implements OnInit {
         alert("Ha habido un error al procesar la solicitud")
       })
   }
+  
+formularios :any
+validarBoton(){
+ this.t.validar().subscribe(respuesta=>{
+   this.formularios = respuesta.rol
+ })
+}
 }

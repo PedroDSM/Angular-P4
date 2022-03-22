@@ -5,7 +5,7 @@
           <div class="col" *ngFor="let Act of actors">
             <div @Aparecer class="card">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(Act.id)"></button>
+              <button type="button" *ngIf="formularios == 'ADMIN'" class="btn-close" aria-label="Close" (click)="eliminar(Act.id)"></button>
             </div>
               <div class="card-body">
                 <p class="card-text">Id: {{Act.id}}</p>

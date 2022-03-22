@@ -9,6 +9,7 @@ import {
   transition,
 } from '@angular/animations';
 import { Productora } from 'src/app/Models/Prmodel'
+import { TokenService } from 'src/app/peticiones/token.service';
 @Component({
   selector: 'app-productora-detalle',
   templateUrl: './productora-detalle.component.html',
@@ -30,7 +31,7 @@ import { Productora } from 'src/app/Models/Prmodel'
       state("void", style({
         transform: "translateY(+100%)",
         opacity: 0
-      })),
+      })), 
       transition(":enter", [
         animate(800, style({
           transform:"translateY(0)",
@@ -74,7 +75,7 @@ export class ProductoraDetalleComponent implements OnInit {
   }
   error = false
   actualizar = false
-  constructor(private peticion: ProductorasService, private router: Router,private activatedRouter: ActivatedRoute) {
+  constructor(private peticion: ProductorasService,private t: TokenService, private router: Router,private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         this.getproductora(params['id'])
@@ -103,6 +104,13 @@ export class ProductoraDetalleComponent implements OnInit {
       this.actualizar = !this.actualizar
     }
   ngOnInit(): void {
+    this.validarBoton()
   }
 
+  formularios :any
+  validarBoton(){
+   this.t.validar().subscribe(respuesta=>{
+     this.formularios = respuesta.rol
+   })
+  }
 }

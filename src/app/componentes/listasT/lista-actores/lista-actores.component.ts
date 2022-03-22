@@ -9,6 +9,8 @@ import {
   transition,
 } from '@angular/animations';
 import { formatDate } from '@angular/common';
+import { TokenService } from 'src/app/peticiones/token.service';
+
 @Component({
   selector: 'app-lista-actores',
   templateUrl: './lista-actores.component.html',
@@ -32,10 +34,11 @@ export class ListaActoresComponent implements OnInit {
 
   public actors: any = []
   error = false
-  constructor(private peticion: ActoresService, private router: Router) { }
+  constructor(private peticion: ActoresService,private t: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.leeerLista()
+    this.validarBoton()
   }
   leeerLista(){
     this.peticion.getAll().subscribe(
@@ -58,4 +61,10 @@ export class ListaActoresComponent implements OnInit {
         alert("Ha habido un error al procesar la solicitud")
       })
   }
+formularios :any
+ validarBoton(){
+  this.t.validar().subscribe(respuesta=>{
+    this.formularios = respuesta.rol
+  })
+ }
 }

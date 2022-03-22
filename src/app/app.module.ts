@@ -17,7 +17,6 @@ import { FormularioIdiomasComponent } from './componentes/formulariosT/formulari
 import { FormularioClasificacionesComponent } from './componentes/formulariosT/formulario-clasificaciones/formulario-clasificaciones.component';
 import { InicioComponent } from './componentes/diseños/inicio/inicio.component';
 import { CategoriasComponent } from './componentes/formulariosT/categorias/categorias.component';
-import { ListaDirectoresComponent } from './componentes/listasT/lista-directores/lista-directores.component';
 import { ListaActoresComponent } from './componentes/listasT/lista-actores/lista-actores.component';
 import { ListaPeliculasComponent } from './componentes/listasT/lista-peliculas/lista-peliculas.component';
 import { ListaProductorasComponent } from './componentes/listasT/lista-productoras/lista-productoras.component';
@@ -34,6 +33,7 @@ import { PeliculaDetalleComponent } from './componentes/D/pelicula-detalle/pelic
 import { DesactivarCuentaComponent } from './componentes/diseños/desactivar-cuenta/desactivar-cuenta.component';
 import { ErrorComponent } from './componentes/diseños/error/error.component';
 import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-protegidas.component';
+import { RolDirective } from './directivas/rol.directive';
 
 
 @NgModule({
@@ -50,7 +50,6 @@ import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-p
     FormularioClasificacionesComponent,
     InicioComponent,
     CategoriasComponent,
-    ListaDirectoresComponent,
     ListaActoresComponent,
     ListaPeliculasComponent,
     ListaProductorasComponent,
@@ -67,6 +66,7 @@ import { RutasProtegidasComponent } from './componentes/rutas-protegidas/rutas-p
     DesactivarCuentaComponent,
     ErrorComponent,
     RutasProtegidasComponent,
+    RolDirective,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
               <h3 @DerechaIzquierda class="card-text">Name: {{Cat.nombre}}</h3> <br>
               <div class="d-grid gap-2">
 
-                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+                <a (click)="inputs()"*ngIf="formularios == 'ADMIN'" class=" btn btn-success" >Actualizar</a>
               </div>
             </div>
             <div *ngIf="actualizar">
@@ -20,7 +20,7 @@
                 <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
                 <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
               </div>
-            </div>
+            </div> 
             <br>
             <a routerLink="/LCA" class="btn btn-dark" >Volver</a>
           </div>

@@ -9,6 +9,7 @@ import {
   transition,
 } from '@angular/animations';
 import { Clasificacion} from 'src/app/Models/Clmodel'
+import { TokenService } from 'src/app/peticiones/token.service';
 @Component({
   selector: 'app-clasificacion-detalle',
   templateUrl: './clasificacion-detalle.component.html',
@@ -24,7 +25,7 @@ import { Clasificacion} from 'src/app/Models/Clmodel'
           transform:"translateY(0)",
           opacity:1
         }))
-      ])
+      ]) 
     ]),
     trigger("AbajoArriba", [
       state("void", style({
@@ -73,7 +74,7 @@ export class ClasificacionDetalleComponent implements OnInit {
   }
   error = false
   actualizar = false
-  constructor(private peticion: ClasificacionesService, private router: Router,private activatedRouter: ActivatedRoute) {
+  constructor(private peticion: ClasificacionesService,private t: TokenService, private router: Router,private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         this.getClasificacion(params['id'])
@@ -102,6 +103,13 @@ export class ClasificacionDetalleComponent implements OnInit {
       this.actualizar = !this.actualizar
     }
   ngOnInit(): void {
+    this.validarBoton()
   }
 
+  formularios :any
+  validarBoton(){
+   this.t.validar().subscribe(respuesta=>{
+     this.formularios = respuesta.rol
+   })
+  }
 }

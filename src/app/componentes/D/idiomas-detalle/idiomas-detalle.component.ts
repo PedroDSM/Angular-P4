@@ -9,6 +9,7 @@ import {
 } from '@angular/animations';
 import { Idioma} from 'src/app/Models/Imodel'
 ;import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/peticiones/token.service';
 
 @Component({
   selector: 'app-idiomas-detalle',
@@ -72,7 +73,7 @@ export class IdiomasDetalleComponent implements OnInit {
   }
   error = false
   actualizar = false
-  constructor(private peticion: IdiomasService, private router: Router,private activatedRouter: ActivatedRoute) {
+  constructor(private peticion: IdiomasService,private t: TokenService, private router: Router,private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         this.getidioma(params['id'])
@@ -101,6 +102,14 @@ export class IdiomasDetalleComponent implements OnInit {
       this.actualizar = !this.actualizar
     }
   ngOnInit(): void {
+    this.validarBoton()
   }
 
+  formularios :any
+  validarBoton(){
+   this.t.validar().subscribe(respuesta=>{
+     this.formularios = respuesta.rol
+   })
+  }
 }
+ 

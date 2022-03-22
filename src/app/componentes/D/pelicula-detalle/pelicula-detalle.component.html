@@ -23,8 +23,8 @@
                 </div>
               </div>
             </div>
-            <div class="d-grid gap-2">
-              <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+            <div class="d-grid gap-2"*ngIf="formularios == 'ADMIN'" >
+              <a (click)="inputs()"  class=" btn btn-success" >Actualizar</a>
             </div>
           </div>
           <div *ngIf="actualizar">
@@ -73,25 +73,32 @@
           </div>
           <a routerLink="/LP" class="btn btn-dark" >Volver</a>
         </div>
+
         <div class="card-footer bg-transparent border-success">
           <h2 class="justify-center">Comentarios</h2>
           <div class="container">
             <div class="card">
               <div class="card-body text-dark">
-                <form #forma="ngForm">
-                <input type="text" ngModel name="comentario" required [ngClass]="{'is-valid': !comentario.invalid, 'is-invalid': comentario.invalid}"  #comentario="ngModel" class=" bg-white text-dark form-control" id="comentario" name="comentario" placeholder="Añada un Comentario">
-                <div class="invalid-feedback" *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)">
-              <div *ngIf="comentario.errors?.['required']">
-                Añada un Comentario Sobre la Pelicula {{Peli.nombre}}.
-              </div>
-              </div>
-            </form>
+                    <form #forma="ngForm">
+                      <input type="text"  [(ngModel)] ="coment.comentario" name="comentario" required [ngClass]="{'is-valid': !comentario.invalid, 'is-invalid': comentario.invalid}"  #comentario="ngModel" class=" bg-white text-dark form-control" id="comentario" name="comentario" placeholder="Añada un Comentario">
+                      
+                      <button (click)="comentar()"[disabled]="!forma.valid"  type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                    <br>
+                    <div *ngFor="let com of coments" class="container">
+                      <div class="row">
+                        <div class="col-10">
+                          <p align="left"> <b>{{com.usuario.nombre}}</b> : {{com.comentario}}  </p>
+                        </div>
+                        <div class="col">
+                          <button  *ngIf="formularios == 'ADMIN'" (click)="eliminarComentario(com._id)" class="d-flex btn btn-danger">Eliminar</button>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <button  [disabled]="!forma.valid"  type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </div>
   </div>

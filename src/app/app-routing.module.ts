@@ -12,7 +12,6 @@ import { FormularioProductorasComponent } from './componentes/formulariosT/formu
 import { ListaActoresComponent } from './componentes/listasT/lista-actores/lista-actores.component';
 import { ListaCategoriasComponent } from './componentes/listasT/lista-categorias/lista-categorias.component';
 import { ListaClasificacionesComponent } from './componentes/listasT/lista-clasificaciones/lista-clasificaciones.component';
-import { ListaDirectoresComponent } from './componentes/listasT/lista-directores/lista-directores.component';
 import { ListaProductorasComponent } from './componentes/listasT/lista-productoras/lista-productoras.component';
 import { ListaPeliculasComponent } from './componentes/listasT/lista-peliculas/lista-peliculas.component';
 import { ListaIdiomasComponent } from './componentes/listasT/lista-idiomas/lista-idiomas.component';
@@ -48,7 +47,6 @@ const routes: Routes = [
       { path: 'FPR', component: FormularioProductorasComponent, canActivate:[TokenGuard, RolGuardGuard], canDeactivate:[TokenGuard] , data:  {expectedRoles: ['ADMIN']}},
       { path: 'LA', component: ListaActoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LC', component: ListaClasificacionesComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
-      { path: 'LD', component: ListaDirectoresComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LP', component: ListaPeliculasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LPR', component: ListaProductorasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },
       { path: 'LCA', component: ListaCategoriasComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]  },

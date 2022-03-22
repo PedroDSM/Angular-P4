@@ -8,6 +8,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { TokenService } from 'src/app/peticiones/token.service';
 
 @Component({
   selector: 'app-lista-productoras',
@@ -31,11 +32,12 @@ import {
 export class ListaProductorasComponent implements OnInit {
   public productoras: any = []
   error = false
-  constructor(private peticion: ProductorasService, private router: Router) {
-    this.leeerLista()
+  constructor(private peticion: ProductorasService,private t: TokenService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.leeerLista()
+    this.validarBoton()
   }
   leeerLista(){
     this.peticion.getAll().subscribe(
@@ -58,5 +60,11 @@ export class ListaProductorasComponent implements OnInit {
         alert("Ha habido un error al procesar la solicitud")
       })
   }
-
+ 
+formularios :any
+validarBoton(){
+ this.t.validar().subscribe(respuesta=>{
+   this.formularios = respuesta.rol
+ })
+}
 }

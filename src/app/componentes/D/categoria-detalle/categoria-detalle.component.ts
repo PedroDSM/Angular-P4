@@ -9,6 +9,7 @@ import {
   transition,
 } from '@angular/animations';
 import { Categoria} from 'src/app/Models/Cmodel'
+import { TokenService } from 'src/app/peticiones/token.service';
 @Component({
   selector: 'app-categoria-detalle',
   templateUrl: './categoria-detalle.component.html',
@@ -20,7 +21,7 @@ import { Categoria} from 'src/app/Models/Cmodel'
         opacity: 0
       })),
       transition(":enter", [
-        animate(800, style({
+        animate(800, style({ 
           transform:"translateY(0)",
           opacity:1
         }))
@@ -71,7 +72,7 @@ export class CategoriaDetalleComponent implements OnInit {
   }
   error = false
   actualizar = false
-  constructor(private peticion: CategoriasService, private router: Router,private activatedRouter: ActivatedRoute) {
+  constructor(private peticion: CategoriasService,private t: TokenService, private router: Router,private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         this.getcategoria(params['id'])
@@ -100,6 +101,13 @@ export class CategoriaDetalleComponent implements OnInit {
       this.actualizar = !this.actualizar
     }
   ngOnInit(): void {
+    this.validarBoton()
   }
 
+  formularios :any
+  validarBoton(){
+   this.t.validar().subscribe(respuesta=>{
+     this.formularios = respuesta.rol
+   })
+  }
 }

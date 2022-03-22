@@ -10,6 +10,7 @@ import {
 } from '@angular/animations';
 import { Actor } from 'src/app/Models/Amodel'
 import { formatDate } from '@angular/common';
+import { TokenService } from 'src/app/peticiones/token.service';
 @Component({
   selector: 'app-actor-detalle',
   templateUrl: './actor-detalle.component.html',
@@ -77,7 +78,7 @@ export class ActorDetalleComponent implements OnInit {
   fecha_actual:Date|string
   error = false
   actualizar = false
-  constructor(private peticion: ActoresService, private router: Router,private activatedRouter: ActivatedRoute) {
+  constructor(private peticion: ActoresService, private t: TokenService,private router: Router,private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         this.getactor(params['id'])
@@ -93,7 +94,7 @@ export class ActorDetalleComponent implements OnInit {
         this.Ac.inicio_carrera= respuesta.actor!.actor!.inicio_carrera
         this.Ac.final_carrera= respuesta.actor!.actor!.final_carrera
       })
-  }
+  } 
   modificar(){
     this.peticion.update(this.id,this.Ac).subscribe(
       respuesta=>{
@@ -115,6 +116,13 @@ export class ActorDetalleComponent implements OnInit {
         this.Ac.final_carrera = formatDate(this.Ac.final_carrera!, 'yyyy-MM-dd', 'en')
     }
   ngOnInit(): void {
+    this.validarBoton()
   }
 
+  formularios :any
+  validarBoton(){
+   this.t.validar().subscribe(respuesta=>{
+     this.formularios = respuesta.rol
+   })
+  }
 }

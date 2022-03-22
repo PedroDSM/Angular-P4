@@ -9,6 +9,7 @@ import {
   transition,
 } from '@angular/animations';
 import { User } from 'src/app/Models/Umodel';
+import { TokenService } from 'src/app/peticiones/token.service';
 
 @Component({
   selector: 'app-detalles',
@@ -24,7 +25,7 @@ import { User } from 'src/app/Models/Umodel';
         animate(800, style({
           transform:"translateY(0)",
           opacity:1
-        }))
+        })) 
       ])
     ]),
     trigger("AbajoArriba", [
@@ -76,7 +77,7 @@ export class DetallesComponent implements OnInit {
   }
   error = false
   actualizar = false
-  constructor(private peticion: PeticionesService, private router: Router,private activatedRouter: ActivatedRoute) {
+  constructor(private peticion: PeticionesService,private t: TokenService, private router: Router,private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         this.getusuario(params['id'])
@@ -110,7 +111,14 @@ export class DetallesComponent implements OnInit {
     this.actualizar = !this.actualizar
   }
   ngOnInit(): void {
+    this.validarBoton()
   }
 
 
+  formularios :any
+  validarBoton(){
+   this.t.validar().subscribe(respuesta=>{
+     this.formularios = respuesta.rol
+   })
+  }
 }

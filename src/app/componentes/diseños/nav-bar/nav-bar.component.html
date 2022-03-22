@@ -11,12 +11,20 @@
                 </li>
                 
 
-                <li *ngFor="let m of menu" class="nav-item dropdown">
+                <li class="nav-item dropdown" *ngIf="formularios == 'ADMIN'">
                     <a class="nav-link text-body fs-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{m.title}}
+                        {{menu[0].title}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li *ngFor="let link of m.links"><a class="dropdown-item" routerLink="{{link.link}}">{{link.name}}</a></li>
+                        <li *ngFor="let link of menu[0].links" ><a class="dropdown-item" routerLink="{{link.link}}">{{link.name}}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-body fs-5 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{menu[1].title}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li *ngFor="let link of menu[1].links" ><a class="dropdown-item" routerLink="{{link.link}}">{{link.name}}</a></li>
                     </ul>
                 </li>
             </ul>
@@ -24,8 +32,6 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle  fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/login">Login</a></li>
-                        <li><a class="dropdown-item" href="/register">Register</a></li>
                         <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                     </ul>
                 </li>

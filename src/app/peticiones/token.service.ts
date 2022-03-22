@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+import { User } from '../Models/Umodel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,10 @@ export class TokenService {
 
   validar(){
     this.token = this.cookieService.get('token')
-    let 
-    header = new HttpHeaders().
+    let header = new HttpHeaders().
     append('Content-Type', 'application/json').
     append('Authorization', `Bearer ${this.token}`)
-    return this.http.get(this.urlBase, {headers:header})
+    return this.http.get<User>(this.urlBase, {headers:header})
   }
 
 }

@@ -64,4 +64,11 @@ export class PeliculasService {
     console.log(info)
     return this.http.post<Respuesta>(this.urlBase,info, {headers:this.header})
   }
+  
+  Comentar(info:any,indice:any){
+    return this.http.post<Respuesta>(this.urlBase+'/'+indice+'/comentar',info, {headers:this.header})
+  }
+  EliminarComentario(info:any,indice:any){
+    return this.http.post<Respuesta>(this.urlBase+'/'+indice+'/eliminar_comentario',info, {headers:this.header})
+  }
 }

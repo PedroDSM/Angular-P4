@@ -8,6 +8,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { TokenService } from 'src/app/peticiones/token.service';
 
 @Component({
   selector: 'app-lista-idiomas',
@@ -31,17 +32,18 @@ import {
 export class ListaIdiomasComponent implements OnInit {
   public idiomas: any = []
   error = false
-  constructor(private peticion: IdiomasService, private router: Router) { }
+  constructor(private peticion: IdiomasService,private t: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.leeerLista()
+    this.validarBoton()
   }
   leeerLista(){
     this.peticion.getAll().subscribe(
       respuesta=>{
         this.idiomas = respuesta.idiomas
       });
-  }
+  } 
   leer(id:any){
     this.router.navigateByUrl('LI/'+id+'/DI');
   }
@@ -57,4 +59,11 @@ export class ListaIdiomasComponent implements OnInit {
         alert("Ha habido un error al procesar la solicitud")
       })
   }
+  
+formularios :any
+validarBoton(){
+ this.t.validar().subscribe(respuesta=>{
+   this.formularios = respuesta.rol
+ })
+}
 }
