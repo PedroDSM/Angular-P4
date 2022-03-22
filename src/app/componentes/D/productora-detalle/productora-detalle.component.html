@@ -1,43 +1,43 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <div class="card">
+        <div class="caja">
           <div class="card-body">
             <div *ngIf="!actualizar">
-              <h3 @DerechaIzquierda class="card-text">Name: {{PR.nombre}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">President: {{PR.presidente}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Propietary: {{PR.propietario}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Website: {{PR.sitio_web}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Name: {{PR.nombre}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">President: {{PR.presidente}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Propietary: {{PR.propietario}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Website: {{PR.sitio_web}}</h3> <br>
               <div class="d-grid gap-2">
 
-                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+                <button (click)="inputs()" class="actualizar" >Actualizar</button>
               </div>
             </div>
             <div *ngIf="actualizar">
   
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpName" class="form-label">Name</label>
+                <label for="inpName" class="form-label; labels">Name</label>
                 <input type="text" [(ngModel)]="PR.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpPresident" class="form-label">President</label>
+                <label for="inpPresident" class="form-label; labels">President</label>
                 <input type="text" [(ngModel)]="PR.presidente" class=" bg-dark text-white form-control" id="inpPresident" name="inpPresident">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpPropietary" class="form-label">Propietary</label>
+                <label for="inpPropietary" class="form-label; labels">Propietary</label>
                 <input type="text" [(ngModel)]="PR.propietario" class=" bg-dark text-white form-control" id="inpPropietary" name="inpPropietary">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpWebsite" class="form-label">Website</label>
+                <label for="inpWebsite" class="form-label; labels">Website</label>
                 <input type="url" [(ngModel)]="PR.sitio_web" class=" bg-dark text-white form-control" id="inpWebsite" name="inpWebsite">
               </div>
               <div class="d-grid gap-2">
-                <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
-                <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+                <button (click)="modificar()" class="actualizar" >Finalizar</button><br>
+                <button (click)="inputs()" class="cancelar" >Cancelar</button>
               </div>
             </div>
             <br>
-            <a routerLink="/LPR" class="btn btn-dark" >Volver</a>
+            <button routerLink="/LPR" class="volver" >Volver</button>
           </div>
         </div>
       </div>

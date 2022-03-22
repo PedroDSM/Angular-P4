@@ -3,17 +3,17 @@
       <div class="col-12 align-self-center table-responsive">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col" *ngFor="let productora of productoras">
-            <div @Aparecer class="card">
+            <div @Aparecer class="caja">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(productora.id)"></button>
             </div>
               <div class="card-body">
-                <p class="card-text">Id: {{productora.id}}</p>
-                <p class="card-text">Name: {{productora.nombre}}</p>
-                <p class="card-text">President: {{productora.presidente}}</p>
-                <p class="card-text">Propietary: {{productora.propietario}}</p>
-                <a class="card-text" href="https://{{productora.sitio_web}}">Website: {{productora.sitio_web}}</a>
-                <p class="card-text"><a (click)="leer(productora.id)" class="btn btn-info" >Detalles</a></p>
+                <p class="color">Id: {{productora.id}}</p>
+                <p class="color">Name: {{productora.nombre}}</p>
+                <p class="color">President: {{productora.presidente}}</p>
+                <p class="color">Propietary: {{productora.propietario}}</p>
+                <a class="url" href="https://{{productora.sitio_web}}">Website: {{productora.sitio_web}}</a><br><br>
+                <button class="detalles" (click)="leer(productora.id)">Detalles</button>
               </div>
             </div>
         </div>

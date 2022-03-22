@@ -1,48 +1,48 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <div class="card">
+        <div class="caja">
           <div class="card-body">
             <div *ngIf="!actualizar">
-              <h3 @DerechaIzquierda class="card-text">Name: {{Ac.nombre}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">BirthDay: {{Ac.f_nacimiento}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Nacionality: {{Ac.nacionalidad}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Start: {{Ac.inicio_carrera}}</h3> <br>
-              <h3 @DerechaIzquierda class="card-text">Finish: {{Ac.final_carrera}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Name: {{Ac.nombre}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">BirthDay: {{Ac.f_nacimiento}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Nacionality: {{Ac.nacionalidad}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Start: {{Ac.inicio_carrera}}</h3> <br>
+              <h3 @DerechaIzquierda class="color">Finish: {{Ac.final_carrera}}</h3> <br>
               <div class="d-grid gap-2">
 
-                <a (click)="inputs()" class=" btn btn-success" >Actualizar</a>
+                <button (click)="inputs()" class="actualizar" >Actualizar</button>
               </div>
             </div>
             <div *ngIf="actualizar">
 
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpName" class="form-label">Name</label>
+                <label for="inpName" class="form-label; labels">Name</label>
                 <input type="text" [(ngModel)]="Ac.nombre" class=" bg-dark text-white form-control" id="inpName" name="inpName">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpBirthday" class="form-label">BirthDay</label>
+                <label for="inpBirthday" class="form-label; labels">BirthDay</label>
                 <input type="date" [(ngModel)]="Ac.f_nacimiento" max="{{fecha_actual}}" class=" bg-dark text-white form-control" id="inpBirthday" name="inpBirthday">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpNacionality" class="form-label">Nacionality</label>
+                <label for="inpNacionality" class="form-label; labels">Nacionality</label>
                 <input type="text" [(ngModel)]="Ac.nacionalidad" class=" bg-dark text-white form-control" id="inpNacionality" name="inpNacionality">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpStart" class="form-label">Start</label>
+                <label for="inpStart" class="form-label; labels">Start</label>
                 <input type="date" [(ngModel)]="Ac.inicio_carrera" max="{{fecha_actual}}" class=" bg-dark text-white form-control" id="inpStart" name="inpStart">
               </div>
               <div @IzquierdaDerecha  class="mb-3">
-                <label for="inpFinish" class="form-label">Finish</label>
+                <label for="inpFinish" class="form-label; labels">Finish</label>
                 <input type="date" [(ngModel)]="Ac.final_carrera" max="{{fecha_actual}}" class=" bg-dark text-white form-control" id="inpFinish" name="inpFinish">
               </div>
               <div class="d-grid gap-2">
-                <a (click)="modificar()" class="btn btn-success" >Finalizar</a>
-                <a (click)="inputs()" class="btn btn-secondary" >Cancelar</a>
+                <button (click)="modificar()" class="actualizar" >Finalizar</button><br>
+                <button (click)="inputs()" class="cancelar" >Cancelar</button>
               </div>
             </div>
             <br>
-            <a routerLink="/LA" class="btn btn-dark" >Volver</a>
+            <button routerLink="/LA" class="volver" >Volver</button>
           </div>
         </div>
       </div>

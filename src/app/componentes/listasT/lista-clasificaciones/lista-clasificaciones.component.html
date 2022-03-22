@@ -3,16 +3,16 @@
       <div class="col-12 align-self-center table-responsive">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col" *ngFor="let clasificacion of clasificaciones">
-            <div class="card">
+            <div class="caja">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(clasificacion.id)"></button>
             </div>
               <div class="card-body">
-                <p class="card-text">Id: {{clasificacion.id}}</p>
-                <p class="card-text">Name: {{clasificacion.nombre}}</p>
-                <p class="card-text">MinAge: {{clasificacion.edad_minima}}</p>
-                <p class="card-text">Description: {{clasificacion.descripcion}}</p>
-                <p class="card-text"><a (click)="leer(clasificacion.id)" class="btn btn-info" >Detalles</a></p>
+                <p class="color">Id: {{clasificacion.id}}</p>
+                <p class="color">Name: {{clasificacion.nombre}}</p>
+                <p class="color">MinAge: {{clasificacion.edad_minima}}</p>
+                <p class="color">Description: {{clasificacion.descripcion}}</p>
+                <button class="detalles"(click)="leer(clasificacion.id)" >Detalles</button>
               </div>
             </div>
         </div>

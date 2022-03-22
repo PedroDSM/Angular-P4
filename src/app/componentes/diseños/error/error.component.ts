@@ -7,6 +7,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
@@ -28,9 +29,11 @@ import {
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+regresar(){
+  this.router.navigateByUrl('/inicio');
+}
 }

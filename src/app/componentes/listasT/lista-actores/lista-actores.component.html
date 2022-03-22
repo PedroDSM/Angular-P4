@@ -3,18 +3,18 @@
       <div class="col-12 align-self-center table-responsive">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col" *ngFor="let Act of actors">
-            <div @Aparecer class="card">
+            <div @Aparecer class="caja">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(Act.id)"></button>
             </div>
               <div class="card-body">
-                <p class="card-text">Id: {{Act.id}}</p>
-                <p class="card-text">Name: {{Act.nombre}}</p>
-                <p class="card-text">BirthDay: {{Act.f_nacimiento}}</p>
-                <p class="card-text">Nacionality: {{Act.nacionalidad}}</p>
-                <p class="card-text">Star: {{Act.actor.inicio_carrera}}</p>
-                <p class="card-text">Finish: {{Act.actor.final_carrera}}</p>
-                <p class="card-text"><a (click)="leer(Act.actor.id)" class="btn btn-info" >Detalles</a></p>
+                <p class="color">Id: {{Act.id}}</p>
+                <p class="color">Name: {{Act.nombre}}</p>
+                <p class="color">BirthDay: {{Act.f_nacimiento}}</p>
+                <p class="color">Nacionality: {{Act.nacionalidad}}</p>
+                <p class="color">Star: {{Act.actor.inicio_carrera}}</p>
+                <p class="color">Finish: {{Act.actor.final_carrera}}</p>
+                <button class="detalles"(click)="leer(Act.actor.id)">Detalles</button>
               </div>
             </div>
         </div>

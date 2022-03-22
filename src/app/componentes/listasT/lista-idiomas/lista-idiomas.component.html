@@ -3,14 +3,14 @@
       <div class="col-12 align-self-center table-responsive">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col" *ngFor="let idioma of idiomas">
-            <div @Aparecer class="card">
+            <div @Aparecer class="caja">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <button type="button" class="btn-close" aria-label="Close" (click)="eliminar(idioma.id)"></button>
             </div>
               <div class="card-body">
-                <p class="card-text">Id: {{idioma.id}}</p>
-                <p class="card-text">Name: {{idioma.nombre}}</p>
-                <p class="card-text"><a (click)="leer(idioma.id)" class="btn btn-info" >Detalles</a></p>
+                <p class="color">Id: {{idioma.id}}</p>
+                <p class="color">Name: {{idioma.nombre}}</p>
+                <button class="detalles" (click)="leer(idioma.id)">Detalles</button>
               </div>
             </div>
         </div>

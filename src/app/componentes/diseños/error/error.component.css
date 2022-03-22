@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 90vh;
+}
+
+:root {
+    --clr-neon: rgb(251, 0, 0);
+    --clr-bg: hsl(323 21% 16%)
+}
+
+.neons {
+    font-size: 25px;
+    height: 70px;
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: "Balsamiq Sans", cursive;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: 5px solid;
+    background-color: transparent;
+    border-radius: 0.40em;
+    text-shadow: 0 0 0.125em rgba(250, 250, 250, 0.829), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    transition: all 0.5s
+}
+
+.neons:hover {
+    background-color: var(--clr-neon);
+    color: rgb(255, 0, 0)
+}
