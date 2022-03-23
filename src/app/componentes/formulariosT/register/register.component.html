@@ -16,7 +16,7 @@
           </div>
           <br>
             <label for="inpUsername" class="form-label text-white">Username</label>
-            <input type="text" [(ngModel)]="user.username" name="username" minlength="5" class=" bg-dark text-white form-control"  id="inpUsername" #username="ngModel" placeholder="Username"  required [ngClass]="{'is-valid': !username.invalid, 'is-invalid': username.invalid}" />
+            <input type="text" [(ngModel)]="user.username" autocomplete="off" name="username" minlength="5" class=" bg-dark text-white form-control"  id="inpUsername" #username="ngModel" placeholder="Username"  required [ngClass]="{'is-valid': !username.invalid, 'is-invalid': username.invalid}" />
             <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">
               <div *ngIf="username.errors?.['minlength']">
                   Introduzca un Usuario con 5 Caracteres Minimo
@@ -27,7 +27,7 @@
           </div>
           <br>
             <label for="inpEmail" class="form-label text-white">Email address</label>
-            <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]{4,60}+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
+            <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" autocomplete="off"  aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$"/>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
               <div *ngIf="email.errors?.['required']">

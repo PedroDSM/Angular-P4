@@ -10,8 +10,11 @@ import { environment } from 'src/environments/environment';
 export class ActoresService {
 
   constructor(private http: HttpClient, private cookieService:CookieService) {
-  console.log('Servicio funcionando');
+  // console.log('Servicio funcionando');
+  
+    this.token = this.cookieService.get('token')
   }
+  
   token = this.cookieService.get('token')
   urlBase = environment.urlbase+'/actores'
   header = new HttpHeaders().
@@ -19,7 +22,12 @@ export class ActoresService {
   append('Authorization', `Bearer ${this.token}`)
 
   getAll(){
-    return this.http.get<Respuesta>(this.urlBase, {headers:this.header})
+    
+    let token = this.cookieService.get('token')
+    let header = new HttpHeaders().
+    append('Content-Type', 'application/json').
+    append('Authorization', `Bearer ${token}`)
+    return this.http.get<Respuesta>(this.urlBase, {headers:header})
   }
   getOne(indice:any){
     return this.http.get<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})

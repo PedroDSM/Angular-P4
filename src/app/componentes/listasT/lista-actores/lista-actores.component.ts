@@ -50,6 +50,7 @@ export class ListaActoresComponent implements OnInit {
     this.router.navigateByUrl('LA/'+id+'/DA');
   }
   eliminar(id:number){
+    console.log(id)
     this.peticion.delete(id).subscribe(
       respuesta=>{
           this.actors = respuesta.actores

@@ -39,7 +39,7 @@ const routes: Routes = [
   
   { path: '', component: RutasProtegidasComponent,
     children:[
-      { path: 'inicio', component: InicioComponent},
+      { path: 'inicio', component: InicioComponent, canActivate:[TokenGuard], canDeactivate:[TokenGuard]},
       { path: 'FCA', component: CategoriasComponent, canActivate:[TokenGuard, RolGuardGuard], canDeactivate:[TokenGuard] , data:  {expectedRoles: ['ADMIN']}},
       { path: 'FA', component: FormularioActoresComponent, canActivate:[TokenGuard, RolGuardGuard], canDeactivate:[TokenGuard] , data:  {expectedRoles: ['ADMIN']}},
       { path: 'FC', component: FormularioClasificacionesComponent, canActivate:[TokenGuard, RolGuardGuard], canDeactivate:[TokenGuard] , data:  {expectedRoles: ['ADMIN']}},

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import {
   trigger,
@@ -37,14 +37,19 @@ import {CookieService} from 'ngx-cookie-service'
 
 export class LoginComponent implements OnInit {
 
-  user:User={
-    email:"",
-    password:""
-  }
-  constructor(private peticion: PeticionesService,private cookieService:CookieService, private router: Router) { }
+  user:User={}
+  constructor(private peticion: PeticionesService,private cookieService:CookieService, private router: Router, public detectorCambios:ChangeDetectorRef) { }
 
-  ngOnInit(): void {
+
+  ngAfterViewInit(){ 
+    this.detectorCambios.detectChanges()
   }
+
+  ngOnInit() {
+    setTimeout(()=>{
+
+    })
+}
 
   send(){
 
@@ -55,8 +60,6 @@ export class LoginComponent implements OnInit {
           this.cookieService.set('token',respuesta.token!.token!,4,'/')
           this.router.navigate(['/inicio']);
           alert(respuesta.mensaje)
-          this.peticion.CurrentUser = respuesta.usuario!
-          console.log(this.peticion.CurrentUser)
       },
       error=>{
         alert(error.error.error)

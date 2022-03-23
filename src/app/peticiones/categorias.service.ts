@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoriasService {
   constructor(private http: HttpClient, private cookieService:CookieService) {
-  console.log('Servicio funcionando');
+  // console.log('Servicio funcionando');
   }
   token = this.cookieService.get('token')
   urlBase = environment.urlbase+'/categorias'
@@ -18,7 +18,11 @@ export class CategoriasService {
   append('Content-Type', 'application/json').
   append('Authorization', `Bearer ${this.token}`)
   getAll(){
-    return this.http.get<Respuesta>(this.urlBase, {headers:this.header})
+    
+    let header = new HttpHeaders().
+    append('Content-Type', 'application/json').
+    append('Authorization', `Bearer ${this.token}`)
+    return this.http.get<Respuesta>(this.urlBase, {headers:header})
   }
   getOne(indice:any){
     return this.http.get<Respuesta>(this.urlBase+'/'+indice, {headers:this.header})

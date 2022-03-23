@@ -10,8 +10,6 @@
             <div class="row g-0">
               <div class="col-md-4">
                 <img [src]="url" class="img-fluid rounded-start" alt="...">
-                <div>
-                <input type = "file" (change)="imageselected($event)"></div>
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -24,7 +22,7 @@
               </div>
             </div>
             <div class="d-grid gap-2"*ngIf="formularios == 'ADMIN'" >
-              <a (click)="inputs()"  class=" btn btn-success" >Actualizar</a>
+              <a (click)="inputs( );ngAfterViewInit()"  class=" btn btn-success" >Actualizar</a>
             </div>
           </div>
           <div *ngIf="actualizar">
@@ -46,7 +44,7 @@
             </div>
             <div @IzquierdaDerecha class="form-outline mb-4">
               <label>Categoria De Pelicula</label>
-              <select  [(ngModel)] = "Peli.categoria_id" class="form-select bg-dark text-white form-control form-control-lg" id="Categoria" #categoria="ngModel" required [ngClass]="{'is-valid': !categoria.invalid, 'is-invalid': categoria.invalid}" placeholder="Categoria">
+              <select  [(ngModel)] = "Peli.categoria_id" autocomplete="off" class="form-select bg-dark text-white form-control form-control-lg" id="Categoria" #categoria="ngModel" required [ngClass]="{'is-valid': !categoria.invalid, 'is-invalid': categoria.invalid}" placeholder="Categoria">
               <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
               </select>
               <div class="invalid-feedback" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
@@ -57,7 +55,7 @@
             </div>
             <div @IzquierdaDerecha class="form-outline mb-4">
               <label>Clasificacion De Pelicula</label>
-              <select [(ngModel)] ="Peli.clasificacion_id"  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion" #clasificacion="ngModel" required [ngClass]="{'is-valid': !clasificacion.invalid, 'is-invalid': clasificacion.invalid}" placeholder="Clasificacion">
+              <select [(ngModel)] ="Peli.clasificacion_id "autocomplete="off"  class="form-select bg-dark text-white form-control form-control-lg" id="clasificacion" #clasificacion="ngModel" required [ngClass]="{'is-valid': !clasificacion.invalid, 'is-invalid': clasificacion.invalid}" placeholder="Clasificacion">
               <option *ngFor="let clas of clasificaciones" [value]="clas.id" selected>{{clas.nombre}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edad Minima: {{clas.edad_minima}}  </option>
               </select>
               <div class="invalid-feedback" *ngIf="clasificacion.invalid && (clasificacion.dirty || clasificacion.touched)">

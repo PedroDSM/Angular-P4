@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class PeticionesService {
   public CurrentUser: User ={}
   constructor(private http: HttpClient, private cookieService:CookieService) {
-    console.log('Servicio funcionando');
+    // console.log('Servicio funcionando');
   }
   urlusers = environment.urlbase+'/usuarios'
   logi = environment.urlbase+'/login'

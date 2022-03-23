@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductorasService {
   constructor(private http: HttpClient, private cookieService:CookieService) {
-  console.log('Servicio funcionando');
+  // console.log('Servicio funcionando');
   }
   token = this.cookieService.get('token')
 

@@ -5,7 +5,7 @@
       <h3>Sign In</h3></div>
       <div class="card-body text-secondary">
         <label for="inpEmail" class="form-label text-white">Email address</label>
-        <input type="email" [(ngModel)]="user.email" name="email" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"/>
+        <input type="email" [(ngModel)]="user.email" name="email" autocomplete="off" class=" bg-dark text-white form-control" id="inpEmail" #email="ngModel" placeholder="Email" aria-describedby="emailHelp" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$"/>
         <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
           <div *ngIf="email.errors?.['required']">
             Introduzca un correo electrónico válido por favor {{ email.value }}
@@ -17,7 +17,7 @@
         </div>
         <br>
         <label for="inpPassword" class="form-label text-white">Password</label>
-        <input type="password"[(ngModel)]="user.password" name="password" minlength="8" class=" bg-dark text-white form-control"  id="inpPassword" #password="ngModel" placeholder="Password" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
+        <input type="password"[(ngModel)]="user.password" name="password" autocomplete="off" minlength="8" class=" bg-dark text-white form-control"  id="inpPassword" #password="ngModel" placeholder="Password" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
         <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
           <div *ngIf="password.errors?.['minlength']">
             Introduzca una Contraseña con 8 Caracteres Minimo

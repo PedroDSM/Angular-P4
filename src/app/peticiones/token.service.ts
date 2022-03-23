@@ -11,7 +11,7 @@ import { User } from '../Models/Umodel';
 export class TokenService {
   token='x'
   constructor(private http: HttpClient, private cookieService:CookieService) {
-    console.log('Servicio funcionando');
+    // console.log('Servicio funcionando');
   }
 
   urlBase = environment.urlbase+'/verificar_token'

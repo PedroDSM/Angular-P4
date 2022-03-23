@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   trigger,
@@ -7,14 +7,12 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { Pelicula, Categoria, Clasificacion, Papeles, Idioma, Productora, Comentario } from 'src/app/Models/Pemodel'
+import { Pelicula, Categoria, Clasificacion, Comentario } from 'src/app/Models/Pemodel'
 import { PeliculasService } from 'src/app/peticiones/peliculas.service';
-import { ActoresService } from 'src/app/peticiones/actores.service';
-import { IdiomasService } from 'src/app/peticiones/idiomas.service';
-import { ProductorasService } from 'src/app/peticiones/productoras.service';
 import { ClasificacionesService } from 'src/app/peticiones/clasificaciones.service';
 import { CategoriasService } from 'src/app/peticiones/categorias.service';
 import { TokenService } from 'src/app/peticiones/token.service';
+import { interval, TimeInterval, timer } from 'rxjs';
 
 @Component({
   selector: 'app-pelicula-detalle',
@@ -71,7 +69,7 @@ import { TokenService } from 'src/app/peticiones/token.service';
     ]),
   ],
 })
-export class PeliculaDetalleComponent implements OnInit {
+export class PeliculaDetalleComponent implements OnInit,OnDestroy {
   formularios :any
   id = 0
   public Peli: Pelicula = {}
@@ -83,19 +81,8 @@ export class PeliculaDetalleComponent implements OnInit {
   error = false
   actualizar = false
   coment : Comentario ={}
-
-  constructor(private peticion: PeliculasService,
-    private router: Router,
-    private t: TokenService,
-    private categoriasPet: CategoriasService, 
-    private clasifPet: ClasificacionesService,
-    private activatedRouter: ActivatedRoute) {
-      this.clasifPet.getAll().subscribe(respuesta =>{this.clasificaciones = respuesta.clasificaciones!});
-      this.categoriasPet.getAll().subscribe(respuesta =>{this.categorias = respuesta.categorias!});
-    this.activatedRouter.params.subscribe(
-      params=>{
-        this.getpeli(params['id'])
-      }) 
+  comentario:Comentario={}
+  constructor(private peticion: PeliculasService,private router: Router,private t: TokenService,private categoriasPet: CategoriasService, private clasifPet: ClasificacionesService,private activatedRouter: ActivatedRoute,public detectorCambios:ChangeDetectorRef,) {
    }
    getpeli(id: any){
     this.id= id
@@ -104,8 +91,8 @@ export class PeliculaDetalleComponent implements OnInit {
         this.Peli = respuesta.pelicula!
         this.Cat = respuesta.pelicula!.categoria!
         this.Cla = respuesta.pelicula!.clasificacion!
-        this.coments= respuesta.comentarios!.comentarios!
-        console.log(respuesta.pelicula!)
+        // this.coments= respuesta.comentarios!.comentarios!
+        // console.log(respuesta.pelicula!)
       })
   }
   modificar(){
@@ -124,9 +111,35 @@ export class PeliculaDetalleComponent implements OnInit {
       this.actualizar = !this.actualizar
       
     }
-  ngOnInit(): void {
-    this.validarBoton()
-  }
+    ngAfterViewInit(){ 
+      this.detectorCambios.detectChanges()
+    }
+
+  contador = interval(5000).subscribe((data)=>{
+    // console.log('Cada '+data+ 'segundos')
+  this.peticion.getOne(this.id).subscribe(
+        respuesta=>{
+          if(respuesta.comentarios==null){
+            return this.contador.unsubscribe()
+          }
+          
+          this.coments= respuesta.comentarios!.comentarios!
+            // console.log(respuesta.pelicula!)
+          })
+  })
+  inte:any
+  ngOnInit() {
+      this.clasifPet.getAll().subscribe(respuesta =>{this.clasificaciones = respuesta.clasificaciones!});
+      this.categoriasPet.getAll().subscribe(respuesta =>{this.categorias = respuesta.categorias!});
+      this.activatedRouter.params.subscribe(
+        params=>{
+                this.getpeli(params['id'])
+        }) 
+      setTimeout(()=>{
+          this.validarBoton()
+          this.contador
+    })
+}
   url = "../../../../assets/imagen.png" 
   imageselected(e:any){
     if(e.target.files){
@@ -137,6 +150,12 @@ export class PeliculaDetalleComponent implements OnInit {
       }
     }
 
+  }
+  ngOnDestroy(){
+    this.contador.unsubscribe()
+    console.log('Se destruye')
+    
+    clearInterval()
   }
   comentar(){
     this.peticion.Comentar(this.coment ,this.id ).subscribe(
@@ -159,9 +178,9 @@ export class PeliculaDetalleComponent implements OnInit {
  }
  
  eliminarComentario(comentarioAEliminar: any){
-   this.coment.comentario = comentarioAEliminar
+   this.comentario.comentario = comentarioAEliminar
    
-   this.peticion.EliminarComentario(this.coment,this.id ).subscribe(
+   this.peticion.EliminarComentario(this.comentario,this.id ).subscribe(
     respuesta=>{
       this.getpeli(this.id)
       alert('Comentario Eliminado correctamente')
